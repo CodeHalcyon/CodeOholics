@@ -7,6 +7,8 @@ import Events from './components/Events'
 import Contact from './components/Contact'
 import Resources from './components/Resource'
 import Footer from './components/Footer'
+import AboutPage from './pages/AboutPage'
+import EventsPage from './pages/EventsPage'
 
 function App() {
 
@@ -15,8 +17,8 @@ function App() {
       <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/events" element={<Events />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/events" element={<EventsPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resources" element={<Resources />} />
         </Routes>
