@@ -172,10 +172,10 @@ const About = () => {
         <div className="flex flex-col md:flex-row gap-10 items-center justify-center">
           {/* Image Grid */}
           <div className="grid grid-cols-2 gap-2 max-w-2xl">
-            <img src="/code1.jpg" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
-            <img src="/code2.jpg" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
+            <img src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code1-0iFgQ8r3ziwU5kVAQE3GJJlCo0RSA4.jpg" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
+            <img src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code2-rDyzvgyGsFaU4BAvYRv9fpucgmIFGm.jpg" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
             <img src="/code3.png" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
-            <img src="/code4.jpg" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
+            <img src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code4-mq3Pp94oVGHh7RZiDusSPaUbJAsqXJ.jpg" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
           </div>
 
           {/* Description */}
@@ -202,16 +202,16 @@ const About = () => {
         <h1 className="text-3xl font-bold text-center mb-10 text-purple-400">Founding Team</h1>
         <div className="flex flex-wrap gap-5 justify-center items-center">
           <div ref={addToFounderRefs} className="card-container">
-            <MemberCard linkedin="https://www.linkedin.com/in/charan-narukulla/" instagram="https://www.instagram.com/charan_chowdary_n/" name="Charan Narukulla" src="/charan.jpeg" />
+            <MemberCard linkedin="https://www.linkedin.com/in/charan-narukulla/" instagram="https://www.instagram.com/charan_chowdary_n/" name="Charan Narukulla" src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/charan-HdgiqB9KCsda7dJI0ubMCxWDyzqhrf.jpeg" />
           </div>
           <div ref={addToFounderRefs} className="card-container">
-            <MemberCard linkedin="https://www.linkedin.com/in/abhilashmovva/" instagram="https://www.instagram.com/abhilashmovva/" name="Abhilash Movva" src="/abhilash.jpeg" />
+            <MemberCard linkedin="https://www.linkedin.com/in/abhilashmovva/" instagram="https://www.instagram.com/abhilashmovva/" name="Abhilash Movva" src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/abhilash-eQVpTbFeKpIK7eDCNkfw3KIckWty56.jpeg" />
           </div>
           <div ref={addToFounderRefs} className="card-container">
-            <MemberCard linkedin="https://www.linkedin.com/in/sourabh-mahindrakar-7459541b0/" instagram="https://www.instagram.com/itzz_sooo_rabh/" name="Sourabh Mahindrakar" src="/sourabh.jpeg" />
+            <MemberCard linkedin="https://www.linkedin.com/in/sourabh-mahindrakar-7459541b0/" instagram="https://www.instagram.com/itzz_sooo_rabh/" name="Sourabh Mahindrakar" src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/sourabh-qiJEAsORlSMW8QIILVnzwdpjBnp5S7.jpeg" />
           </div>
           <div ref={addToFounderRefs} className="card-container">
-            <MemberCard linkedin="http://linkedin.com/in/manav-patel-3964b41ba/" instagram="https://www.instagram.com/m.n.v_patel/" name="Manav Patel" src="/manav.jpeg" />
+            <MemberCard linkedin="http://linkedin.com/in/manav-patel-3964b41ba/" instagram="https://www.instagram.com/m.n.v_patel/" name="Manav Patel" src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/manav-mUocAEV2mKT1hGhbWaJYX44gNoHUWu.jpeg" />
           </div>
         </div>
       </div>

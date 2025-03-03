@@ -54,7 +54,7 @@ const Section2 = () => {
           </div>
         </div>
         <div>
-          <img src="/join.jpg" alt="Codeoholics" className="R rounded-lg shadow-lg w-[700px] h-[500px] object-cover" />
+          <img src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/join-4bPsUvUTVAcVbaYH6W2mBcSzyecrej.jpg" alt="Codeoholics" className="R rounded-lg shadow-lg w-[700px] h-[500px] object-cover" />
         </div>
       </div>
     </>

@@ -45,7 +45,7 @@ const EventsSection = () => {
                     <p className="text-gray-300 text-sm mt-2">Nationwide 24-Hour Hackathon Join us for a nationwide 24-hour hackathon exclusively for B.Tech students from across India! Innovate, collaborate, and create nonstop as you tackle challenging problems, develop innovative solutions, and compete for exciting prizes.</p>
                 </div>
                 <div className="event-card bg-gray-800 p-5 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
-                    <Card src="/decentralized.JPG" heading="Decentralized Dreamscape" />
+                    <Card src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/decentralized-i8Lx7Wyq6y1jcr0y2GFKWRXa2xD8OP.JPG" heading="Decentralized Dreamscape" />
                     <p className="text-gray-300 text-sm mt-2">A Web3 & Blockchain Event Join us for Decentralized Dreamscape, where we delve into the world of Web3 and blockchain. Hear from expert speakers Mr. Rajashekar and Mr. Siv Ram Shastri.</p>
                 </div>
                 <div className="event-card bg-gray-800 p-5 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">

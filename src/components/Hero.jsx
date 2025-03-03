@@ -94,9 +94,9 @@ const Hero = () => {
 
       {/* Cards Section with Row-wise Animations */}
       <div className="cards-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div className='card-item'><Card  src="/aleph.JPG" heading="Dynamic Workshops for Skill Development" desc="Join our workshops to enhance your coding skills and gain practical knowledge." /></div>
+        <div className='card-item'><Card  src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/aleph-rTSU91imq3RwqWkPY9EEdeHeQTtWpW.JPG" heading="Dynamic Workshops for Skill Development" desc="Join our workshops to enhance your coding skills and gain practical knowledge." /></div>
         <div className='card-item'><Card  heading="Intensive Bootcamps for Career Growth" src="/gemini.JPG" desc="Enroll in our bootcamps to level up your career and unlock new opportunities." /></div>
-        <div className='card-item'><Card  heading="Exciting Hackathons for Team Building" src="/hackathon.JPG" desc="Participate in our hackathons to collaborate with others and build amazing projects." /></div>
+        <div className='card-item'><Card  heading="Exciting Hackathons for Team Building" src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/hackathon-Uc5t7qoWPpI2I0Ymd7PYsv9zH8P2Nu.JPG" desc="Participate in our hackathons to collaborate with others and build amazing projects." /></div>
       </div>
 
       <div>

@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
         <>
             <nav className='flex flex-row justify-between items-center p-4 bg-black text-white shadow-md'>
-                <img src='/logo.jpg' alt='Logo' className='h-[64px] w-auto' />
+                <img src='https://etvqaruci3mfadph.public.blob.vercel-storage.com/logo-knQ3WyR3K86P02WpLwXGMssY4STQze.jpg' alt='Logo' className='h-[64px] w-auto' />
                 <div className='flex flex-row gap-6'>
                     {items.map((item, key) => (
                         <NavLink
