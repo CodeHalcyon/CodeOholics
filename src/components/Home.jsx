@@ -16,7 +16,7 @@ const Home = () => {
       <div className="relative h-screen w-screen flex items-center justify-center bg-gray-900">
         {/* Background Image */}
         <img
-          src="../../hero_image.png"
+          src="/hero_image.webp"
           loading="lazy"
           className="absolute h-full w-full object-cover opacity-70"
           alt="Hero Background"
