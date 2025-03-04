@@ -7,8 +7,8 @@ const CurrentTeamMember = (props) => {
 
                 <div>
                     <div>
-                        <UserRound size={150} strokeWidth={1.5} />
-                        {/* <img src="" alt="" /> */}
+                        {/* <UserRound size={150} strokeWidth={1.5} /> */}
+                        <img src={props.src} alt="" />
                     </div>
                 </div>
                 <div>
@@ -17,8 +17,16 @@ const CurrentTeamMember = (props) => {
                     <p className='underline italic'>{props.role}</p>
                     <p>{props.desc}</p>
                     <div className='flex gap-2 mt-4'>
-                        <a href="www.linkedin.com"><Linkedin size={24} color="#2d56fb" strokeWidth={1.5} /></a>
-                        <a href='www.github.com'><Github size={24} strokeWidth={1.5} /></a>
+                        <a href={props.linkedin} target="_blank" rel="noopener noreferrer">
+                            <Linkedin
+                                className="hover:drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)] transition-all hover:scale-110"
+                                size={24}
+                                color="#2d56fb"
+                                strokeWidth={1.5}
+                            />
+                        </a>
+
+                        <a href='www.github.com'><Github size={24} className="hover:drop-shadow-[0_4px_6px_rgba(255,255,255,0.5)] transition-all hover:scale-110" strokeWidth={1.5} /></a>
                     </div>
                 </div>
             </div>

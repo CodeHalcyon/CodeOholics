@@ -221,16 +221,17 @@ const About = () => {
         <h1 className="font-bold text-3xl text-center text-cyan-300 mb-10">Current Team</h1>
         <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <div ref={addToCurrentTeamRefs} className="bg-gray-800 p-5 rounded-lg shadow-lg flex items-center gap-4">
-            <CurrentTeamMember role="President" name="Farhan Ahmed" desc="Leading the community to new heights with innovation and collaboration." />
+            <CurrentTeamMember 
+            src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/farhan-db5xzE7xqfwmAYF3uPDlkXA7auZy3L.webp"  role="President" name="Farhan Ahmed" desc="Leading the community to new heights with innovation and collaboration." linkedin="https://www.linkedin.com/in/farhan-ahmed-63324b242/" />
           </div>
           <div ref={addToCurrentTeamRefs} className="bg-gray-800 p-5 rounded-lg shadow-lg flex items-center gap-4">
-            <CurrentTeamMember role="Vice President" name="Leo Nikhil" desc="Ensuring a smooth experience for all members and organizing major events." />
+            <CurrentTeamMember linkedin="https://www.linkedin.com/in/leo-nikhil-mothukuri-5169b021a/" src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/leo-26vkeg3lOwZ7bgdlcXpNjd2JkJRd6V.webp" role="Vice President" name="Leo Nikhil" desc="Ensuring a smooth experience for all members and organizing major events." />
           </div>
           <div ref={addToCurrentTeamRefs} className="bg-gray-800 p-5 rounded-lg shadow-lg flex items-center gap-4">
-            <CurrentTeamMember role="General Secretary" name="Moiduddin Ahmed" desc="Managing records, communications, and administrative tasks." />
+            <CurrentTeamMember linkedin="https://www.linkedin.com/in/moiduddinahmed-79a94923b/" src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp" role="General Secretary" name="Moiduddin Ahmed" desc="Managing records, communications, and administrative tasks." />
           </div>
           <div ref={addToCurrentTeamRefs} className="bg-gray-800 p-5 rounded-lg shadow-lg flex items-center gap-4">
-            <CurrentTeamMember role="Development Lead" name="Chetan Sirigiri" desc="Driving technical innovation and mentoring developers." />
+            <CurrentTeamMember linkedin="https://www.linkedin.com/in/chetan-sirigiri/" src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/chetan-ykTVeIxZoZmEe5rm2voHxrdVAVJMVc.webp" role="Development Lead" name="Chetan Sirigiri" desc="Driving technical innovation and mentoring developers." />
           </div>
         </div>
       </div>
