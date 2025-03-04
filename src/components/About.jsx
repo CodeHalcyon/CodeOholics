@@ -171,12 +171,29 @@ const About = () => {
         <h1 className="font-extrabold text-5xl text-center text-purple-400 mb-10">About CodeOholics</h1>
         <div className="flex flex-col md:flex-row gap-10 items-center justify-center">
           {/* Image Grid */}
-          <div className="grid grid-cols-2 gap-2 max-w-2xl">
-            <img src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code1-0iFgQ8r3ziwU5kVAQE3GJJlCo0RSA4.jpg" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
-            <img src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code2-rDyzvgyGsFaU4BAvYRv9fpucgmIFGm.jpg" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
-            <img src="/code3.png" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
-            <img src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code4-mq3Pp94oVGHh7RZiDusSPaUbJAsqXJ.jpg" className="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform duration-300" alt="Code" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto px-4">
+            <img
+              src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code1-0iFgQ8r3ziwU5kVAQE3GJJlCo0RSA4.jpg"
+              className="w-full h-60 sm:h-48 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+              alt="Code"
+            />
+            <img
+              src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code2-rDyzvgyGsFaU4BAvYRv9fpucgmIFGm.jpg"
+              className="w-full h-60 sm:h-48 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+              alt="Code"
+            />
+            <img
+              src="/code3.png"
+              className="w-full h-60 sm:h-48 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+              alt="Code"
+            />
+            <img
+              src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code4-mq3Pp94oVGHh7RZiDusSPaUbJAsqXJ.jpg"
+              className="w-full h-60 sm:h-48 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+              alt="Code"
+            />
           </div>
+
 
           {/* Description */}
           <div className="w-full md:w-1/2 p-5 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
@@ -221,8 +238,8 @@ const About = () => {
         <h1 className="font-bold text-3xl text-center text-cyan-300 mb-10">Current Team</h1>
         <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <div ref={addToCurrentTeamRefs} className="bg-gray-800 p-5 rounded-lg shadow-lg flex items-center gap-4">
-            <CurrentTeamMember 
-            src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/farhan-db5xzE7xqfwmAYF3uPDlkXA7auZy3L.webp"  role="President" name="Farhan Ahmed" desc="Leading the community to new heights with innovation and collaboration." linkedin="https://www.linkedin.com/in/farhan-ahmed-63324b242/" />
+            <CurrentTeamMember
+              src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/farhan-db5xzE7xqfwmAYF3uPDlkXA7auZy3L.webp" role="President" name="Farhan Ahmed" desc="Leading the community to new heights with innovation and collaboration." linkedin="https://www.linkedin.com/in/farhan-ahmed-63324b242/" />
           </div>
           <div ref={addToCurrentTeamRefs} className="bg-gray-800 p-5 rounded-lg shadow-lg flex items-center gap-4">
             <CurrentTeamMember linkedin="https://www.linkedin.com/in/leo-nikhil-mothukuri-5169b021a/" src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/leo-26vkeg3lOwZ7bgdlcXpNjd2JkJRd6V.webp" role="Vice President" name="Leo Nikhil" desc="Ensuring a smooth experience for all members and organizing major events." />

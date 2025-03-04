@@ -8,7 +8,7 @@ const CurrentTeamMember = (props) => {
                 <div>
                     <div>
                         {/* <UserRound size={150} strokeWidth={1.5} /> */}
-                        <img src={props.src} alt="" />
+                        <img src={props.src} className='' alt="" />
                     </div>
                 </div>
                 <div>
