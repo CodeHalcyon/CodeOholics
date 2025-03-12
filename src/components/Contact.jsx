@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
+import supabase from "../config/supabaseConfig";
 const textVariants = {
   hidden: { opacity: 0, scale: 0.8, y: 30 },
   visible: {
@@ -23,6 +23,9 @@ const flickerVariants = {
 };
 
 const Contact = () => {
+  useEffect(() => {
+    // console.log(supabase);
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,12 +38,37 @@ const Contact = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // console.log(value);
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+    
+
+    const {data,error} = await supabase
+    .from("users")
+    .insert([{
+      name:formData.name,
+      email:formData.email,
+      subject:formData.subject,
+      message:formData.message
+    }])
+
+    if(error){
+      alert("An error occured")
+      // console.log(error);
+      
+    }
+
+    else{
+      // console.log(data);
+      // alert("data add hogaya bc ✨✨")
+    }
+
+
 
     // Simulate form submission
     setTimeout(() => {
@@ -206,7 +234,6 @@ const Contact = () => {
                       <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                     </svg>
                   </a>
-                  
                 </div>
               </div>
             </div>
