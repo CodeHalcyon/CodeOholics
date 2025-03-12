@@ -26,13 +26,6 @@ const Footer = () => {
               <FaGithub size={22} />
             </a>
             <a
-              href=""
-              target="_blank"
-              className="text-emerald-300/70 hover:text-white transition-colors duration-300"
-            >
-              <FaTwitter size={22} />
-            </a>
-            <a
               href="https://linkedin.com/in/codeoholics"
               target="_blank"
               className="text-emerald-300/70 hover:text-white transition-colors duration-300"
