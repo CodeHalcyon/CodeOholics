@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaPhone,
   FaEnvelope,
@@ -7,8 +7,29 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import supabase from "../config/supabaseConfig";
+import validator from 'validator';
+
 
 const Footer = () => {
+  const [Newsletter, setnewsLetter] = useState("");
+  const handleOnSubmit = async () => {
+    if (!validator.isEmail(Newsletter)) {
+      alert("Please enter a valid email");
+      return;
+    } else {
+      const { data, error } = await supabase
+        .from("newsletter")
+        .insert([{ email: Newsletter }]);
+      if (error) {
+        alert("Some error occured :(...");
+        console.log(error);
+      } else {
+        alert("Newsletter subscribed successfully :...");
+      }
+    }
+  };
+
   return (
     <footer className="bg-gradient-to-r from-emerald-950 via-green-900 to-emerald-950 text-white mt-auto py-12 px-6 sm:px-10">
       <div className="max-w-7xl mx-auto">
@@ -49,12 +70,18 @@ const Footer = () => {
             <div className="w-full">
               <div className="flex flex-col sm:flex-row gap-3 w-full">
                 <input
+                  value={Newsletter}
+                  onChange={(e) => {
+                    setnewsLetter(e.target.value);
+                    console.log(e.target.value);
+                  }}
                   type="email"
                   className="outline-none p-3 w-full rounded-md bg-emerald-950/50 border border-emerald-700/40 text-white placeholder-emerald-200/50
                                     focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
                   placeholder="Enter your email"
                 />
                 <button
+                  onClick={handleOnSubmit}
                   className="py-3 px-6 rounded-md bg-green-600 hover:bg-green-500 text-white font-medium transition-all duration-300
                                     shadow-lg shadow-green-600/20 hover:shadow-green-500/30"
                 >
@@ -145,7 +172,6 @@ const Footer = () => {
           <div>
             © {new Date().getFullYear()} CodeOholics. All rights reserved.
           </div>
-          
         </div>
       </div>
     </footer>
