@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FiCalendar,
   FiFileText,
@@ -9,6 +9,9 @@ import {
 } from "react-icons/fi";
 import AdminLogin from "./AdminLogin";
 import { useNavigate } from "react-router-dom";
+import getEvents from "../Helper/getEvents";
+import supabase from "../config/supabaseConfig";
+import deleteEvent from "../Helper/deleteEvent";
 
 const Dashboard = () => {
   // States for the different sections
@@ -21,30 +24,14 @@ const Dashboard = () => {
     navigate("/");
   };
   // Dummy data for events
-  const [events, setEvents] = useState([
-    {
-      id: 1,
-      title: "Tech Conference 2025",
-      date: "2025-04-15",
-      location: "San Francisco",
-      description: "Annual tech conference featuring latest innovations",
-    },
-    {
-      id: 2,
-      title: "Design Workshop",
-      date: "2025-03-28",
-      location: "New York",
-      description: "Workshop on UI/UX design principles",
-    },
-    {
-      id: 3,
-      title: "Hackathon",
-      date: "2025-05-10",
-      location: "Boston",
-      description: "48-hour coding competition",
-    },
-  ]);
-
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    async function getData() {
+      const data = await getEvents();
+      setEvents(data);
+    }
+    getData();
+  }, []);
   // Dummy data for forms
   const [forms, setForms] = useState([
     {
@@ -69,7 +56,6 @@ const Dashboard = () => {
       status: "inactive",
     },
   ]);
-
   // Event form state
   const [newEvent, setNewEvent] = useState({
     title: "",
@@ -86,8 +72,12 @@ const Dashboard = () => {
   });
 
   // Handler for adding a new event
-  const handleAddEvent = (e) => {
+  const handleAddEvent = async (e) => {
     e.preventDefault();
+    const { data, error } = await supabase.from("events").insert(newEvent);
+    if (error) console.log(error.message);
+    else console.log("event added", data);
+
     const id = events.length
       ? Math.max(...events.map((event) => event.id)) + 1
       : 1;
@@ -110,8 +100,17 @@ const Dashboard = () => {
   };
 
   // Handler for deleting an event
-  const handleDeleteEvent = (id) => {
-    setEvents(events.filter((event) => event.id !== id));
+  const handleDeleteEvent = async (id) => {
+    try {
+      setEvents(events.filter((event) => event.id !== id)); // Optimistic UI update
+
+      const result = await deleteEvent(id);
+      if (!result) {
+        console.log(result);
+      }
+    } catch (err) {
+      console.error("Unexpected error:", err);
+    }
   };
 
   // Handler for deleting a form
