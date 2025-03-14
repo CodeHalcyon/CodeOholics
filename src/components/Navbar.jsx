@@ -5,7 +5,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const items = ["Home", "About", "Events", "Contact", "Resources"];
+  const items = ["Home", "About", "Events", "Contact", "Resources","Admin Login"];
 
   // Prevent background scrolling when menu is open
   useEffect(() => {

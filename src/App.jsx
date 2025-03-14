@@ -7,6 +7,8 @@ import Resources from "./components/Resource";
 import Footer from "./components/Footer";
 import AboutPage from "./pages/AboutPage";
 import EventsPage from "./pages/EventsPage";
+import AdminLogin from "./components/AdminLogin";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/resources" element={<Resources />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </>
