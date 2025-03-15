@@ -37,7 +37,7 @@ const Navbar = () => {
           <img
             src="/logo.jpg"
             alt="Logo"
-            className={`h-12 w-auto transition-all duration-300 ${
+            className={`h-12 w-auto rounded-full transition-all duration-300 ${
               scrolled ? "h-10" : "h-12"
             }`}
           />
