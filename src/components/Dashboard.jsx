@@ -12,9 +12,11 @@ import { useNavigate } from "react-router-dom";
 import getEvents from "../Helper/getEvents";
 import supabase from "../config/supabaseConfig";
 import deleteEvent from "../Helper/deleteEvent";
+import getUsers from "../Helper/getUsers";
 
 const Dashboard = () => {
   // States for the different sections
+  getUsers();
   const [activeTab, setActiveTab] = useState("events");
   const [showAddEventForm, setShowAddEventForm] = useState(false);
   const [showAddFormForm, setShowAddFormForm] = useState(false);
@@ -98,7 +100,6 @@ const Dashboard = () => {
     setNewForm({ title: "", description: "", fields: [] });
     setShowAddFormForm(false);
   };
-
   // Handler for deleting an event
   const handleDeleteEvent = async (id) => {
     try {
@@ -314,6 +315,25 @@ const Dashboard = () => {
                             rows="3"
                             required
                           ></textarea>
+                        </div>
+                        {/* ✅ New Input for Image Source Link */}
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Event Image URL
+                          </label>
+                          <input
+                            type="text"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                            placeholder="Enter image URL..."
+                            value={newEvent.img}
+                            onChange={(e) =>
+                              setNewEvent({
+                                ...newEvent,
+                                src: e.target.value,
+                              })
+                            }
+                            required
+                          />
                         </div>
                         <div className="flex justify-end space-x-2">
                           <button
