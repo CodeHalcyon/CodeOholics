@@ -83,7 +83,10 @@ const Dashboard = () => {
     const id = events.length
       ? Math.max(...events.map((event) => event.id)) + 1
       : 1;
-    setEvents([...events, { id, ...newEvent }]);
+
+    // Add new event at the beginning of the array instead of the end
+    setEvents([{ id, ...newEvent }, ...events]);
+
     setNewEvent({ title: "", date: "", location: "", description: "" });
     setShowAddEventForm(false);
   };
@@ -93,10 +96,13 @@ const Dashboard = () => {
     e.preventDefault();
     const id = forms.length ? Math.max(...forms.map((form) => form.id)) + 1 : 1;
     const now = new Date().toISOString().split("T")[0];
+
+    // Add new form at the beginning of the array
     setForms([
-      ...forms,
       { id, ...newForm, createdAt: now, responses: 0, status: "active" },
+      ...forms,
     ]);
+
     setNewForm({ title: "", description: "", fields: [] });
     setShowAddFormForm(false);
   };

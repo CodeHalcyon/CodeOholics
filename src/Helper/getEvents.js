@@ -1,8 +1,15 @@
 import supabase from "../config/supabaseConfig";
+
 const getEvents = async () => {
-    const {data,error} = await supabase.from("events").select("*")
-    if(error) console.log(error);
+    const { data, error } = await supabase
+        .from("events")
+        .select("*")
+        .order('date', { ascending: false });
+    
+    if (error) console.log(error);
     else console.log(data);
-    return data
+    
+    return data;
 }
-export default getEvents
+
+export default getEvents;
