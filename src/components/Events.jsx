@@ -17,71 +17,6 @@ const Events = () => {
 
     fetchData();
   }, []);
-  // Same events array as before
-  // const events = [
-  //   {
-  //     name: "Decentralized Dreamscape: A Web3 & Blockchain Event",
-  //     desc: "A Web3 & Blockchain Event Join us for Decentralized Dreamscape, where we delve into the world of Web3 and blockchain. Hear from expert speakers Mr. Rajashekar and Mr. Siv Ram Shastri.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/decentralized-i8Lx7Wyq6y1jcr0y2GFKWRXa2xD8OP.JPG",
-  //   },
-  //   {
-  //     name: "Gemini for everything",
-  //     desc: "Simplify Your AI Application Development Join our one-day event to explore Google AI technologies like Gemini, Gemma, GenKit, and PaLM! Gain hands-on experience in creating AI-powered applications, guided by expert speakers, without the need for extensive training.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/gemini-405g56fUwi5rWLVXPR7zRqxCHKvtsl.webp",
-  //   },
-  //   {
-  //     name: "Tech Genesis",
-  //     desc: "Join us for Tech Genesis, where two expert speakers share their valuable insights on securing job placements and overcoming startup challenges.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/tech%20genesis-jFaRxUyczl7nGhFYnjlr33A4sf7duX.webp",
-  //   },
-  //   {
-  //     name: "Hack the Verse",
-  //     desc: "Nationwide 24-Hour Hackathon Join us for a nationwide 24-hour hackathon exclusively for B.Tech students from across India! Innovate, collaborate, and create nonstop as you tackle challenging problems, develop innovative solutions, and compete for exciting prizes.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/htvimage-XGXEreJJ9t2tXoqgve6wScKPkkedeD.webp",
-  //   },
-  //   {
-  //     name: "Techpreneurship",
-  //     desc: "Unveiling the World of Technology & Entrepreneurship Join us for an exciting 1-day workshop organized by CodeOholics and Knowvation! Dive into key topics like web development, IT industry trends, generative AI, and the startup ecosystem, all while learning tools to enhance your skills and advance your career.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/techpreunership-JUS5X8ld2GHiXvzFciUfpiZpd2bqdT.webp",
-  //   },
-  //   {
-  //     name: "DSA Bootcamp",
-  //     desc: "Master Data Structures and Algorithms Join the DSA Bootcamp led by Gate Asprint and former VP Mohd Ibrahim! This transformative event offers intensive sessions to sharpen your skills in data structures, algorithms, and problem-solving techniques, with expert guidance and strategic insights.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/dsa-ghyxBeUN7SXrdHDZfK1o46m2CEmRA1.webp",
-  //   },
-  //   {
-  //     name: "Codeignite",
-  //     desc: "Codeoholics hosted Codeignite 2k23, a dynamic event featuring keynote speaker Sai Krishna Alishala, Founder of Elitceler Technologies. With insightful sessions on career growth, APIs, and Prompt Engineering",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/codeignite-zoopKUKNJoXyKfiIN8eruBzVbMZt62.webp",
-  //   },
-  //   {
-  //     name: "Club Orientation",
-  //     desc: "A Gateway to Coding & Tech Careers Kickstart your journey with the Codeoholics Club! This dynamic event featured engaging sessions on coding challenges, career opportunities, and placement strategies, led by experts like Ibrahim, Astha Sharma, and Sourabh.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/club%20orientation-SXCxB1u0EDkmu9VW4pgllm1K3atwFB.webp ",
-  //   },
-  //   {
-  //     name: "Aarambh",
-  //     desc: "A Three-Round Challenge Join us for a thrilling three-round coding contest hosted by CodeOholics Club! Designed to foster a coding culture and prepare students for industry-level competitions, this contest will test your problem-solving skills and coding expertise.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/code1-0iFgQ8r3ziwU5kVAQE3GJJlCo0RSA4.jpg",
-  //   },
-  //   {
-  //     name: "Chapter Induction",
-  //     desc: "Core Team Introduction & Competitive Programming Focus Join us for an exciting event where we'll introduce our core team, unveil our mission, and highlight the importance of competitive programming in shaping future tech leaders. Don't miss out on this opportunity to get involved!",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/induction-wMLzbfOYwbj5vJpvFDmw0dNljuwTeC.webp",
-  //   },
-  //   {
-  //     name: "6 Companies 6 Days",
-  //     desc: "Problem-Solving Mastery with Arsh Goyal Join us for an exclusive workshop with Arsh Goyal to master problem-solving techniques and gain insights into cracking interviews at top product-based companies like FAANG! Learn strategies and tips from an industry expert to level up your coding skills.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/logo-knQ3WyR3K86P02WpLwXGMssY4STQze.jpg",
-  //   },
-  //   {
-  //     name: "Kick Starter",
-  //     desc: "Enhance Problem-Solving & Critical Thinking Skills Join us for an exciting event designed to enhance your problem-solving and critical thinking skills. Compete with fellow chapter members and challenge yourself to think outside the box in a series of engaging tasks that foster a spirit of competition and collaboration.",
-  //     img: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/kick-WHD1Lxlmb4i7Tmx5KDDjlHoPNhlevn.webp",
-  //   },
-  // ];
-
-  // Filter events based on search query
   const filteredEvents =
     events?.filter((event) =>
       event.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -122,7 +57,7 @@ const Events = () => {
               {/* Featured Event Image */}
               <div className="w-full lg:w-1/2 overflow-hidden rounded-lg shadow-lg">
                 <img
-                  src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/h4m%20poster-PxQeGPdguPq0yc9ShWIpCLbaGmEBuH.jpg"
+                  src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/Instagram%20Post-JcHLJvTQ8XHJpNHfo3bLJtxzSyoMW6.png"
                   className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
                   alt="Hack The Verse 2.0"
                 />
@@ -183,7 +118,7 @@ Hack-4-Mini is a premier 24-hour national-level online hackathon that brings tog
                   </div>
                 </div>
                 <a
-                  href="https://unstop.com/p/hack-4-mini-2nd-edition-codeoholics-1479552?lb=C7rx6Xn8&utm_medium=Share&utm_source=shortUrl"
+                  href="https://unstop.com/p/hack-4-mini-2nd-edition-cmr-technical-campus-cmrctc-telangana-1477021"
                   className="inline-block px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl"
                   target="_blank"
                   rel="noopener noreferrer"
