@@ -122,7 +122,7 @@ const Events = () => {
               {/* Featured Event Image */}
               <div className="w-full lg:w-1/2 overflow-hidden rounded-lg shadow-lg">
                 <img
-                  src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/htv2.0-1iDA8XkmSGzThFeAbG1U12qee6z6jV.webp"
+                  src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/h4m%20poster-PxQeGPdguPq0yc9ShWIpCLbaGmEBuH.jpg"
                   className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
                   alt="Hack The Verse 2.0"
                 />
@@ -131,11 +131,12 @@ const Events = () => {
               {/* Featured Event Details */}
               <div className="w-full lg:w-1/2 text-left">
                 <h2 className="text-2xl font-bold text-emerald-400 mb-3">
-                  Hack The Verse 2.0
+                  Hack-4-Mini 2.0
                 </h2>
                 <p className="text-gray-300 mb-4 leading-relaxed">
-                  Nationwide 24-Hour Hackathon exclusively for B.Tech students!
-                  Innovate, collaborate, and compete for exciting prizes.
+                  Hack-4-Mini 2.0 is the second edition of CodeOholics' flagship national-level online hackathon, designed to celebrate innovation, collaboration, and real-world problem solving. Hosted on Unstop, this event brings together bright minds from across India in a battle of brains, creativity, and coding.
+
+Hack-4-Mini is a premier 24-hour national-level online hackathon that brings together over 2000 brilliant minds from 28 states and 7 union territories, creating a digital arena where innovation knows no boundaries.
                 </p>
                 <div className="flex flex-col gap-2 text-gray-300 mb-6">
                   <div className="flex items-center gap-2">
@@ -153,7 +154,7 @@ const Events = () => {
                       />
                     </svg>
                     <span>
-                      <strong>Date:</strong> 3rd April, 2025
+                      <strong>Date:</strong> 26th May, 2025
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -177,12 +178,12 @@ const Events = () => {
                       />
                     </svg>
                     <span>
-                      <strong>Venue:</strong> CMRTC Auditorium, Hyderabad
+                      <strong>Venue:</strong> Online (WhatsApp)
                     </span>
                   </div>
                 </div>
                 <a
-                  href="https://www.google.com"
+                  href="https://unstop.com/p/hack-4-mini-2nd-edition-codeoholics-1479552?lb=C7rx6Xn8&utm_medium=Share&utm_source=shortUrl"
                   className="inline-block px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl"
                   target="_blank"
                   rel="noopener noreferrer"
