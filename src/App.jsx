@@ -35,7 +35,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/resources" element={<Resources />} />
+        {/* <Route path="/resources" element={<Resources />} /> */}
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>

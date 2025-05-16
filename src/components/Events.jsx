@@ -113,7 +113,7 @@ Hack-4-Mini is a premier 24-hour national-level online hackathon that brings tog
                       />
                     </svg>
                     <span>
-                      <strong>Venue:</strong> Online (WhatsApp)
+                      <strong>Venue:</strong> Online 
                     </span>
                   </div>
                 </div>
