@@ -10,6 +10,7 @@ import EventsPage from "./pages/EventsPage";
 import AdminLogin from "./components/AdminLogin";
 import Dashboard from "./components/Dashboard";
 import PopupModal from "./components/PopupModal";
+import { Analytics } from "@vercel/analytics/react"
 import { useState } from "react";
 function App() {
   const [showModal, setShowModal] = useState(true);
@@ -28,6 +29,7 @@ function App() {
         />
       )}
       <Navbar />
+      <Analytics/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
