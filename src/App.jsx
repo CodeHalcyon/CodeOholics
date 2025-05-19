@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import "./index.css";
 import Home from "./components/Home";
 import Contact from "./components/Contact";
-import Resources from "./components/Resource";
+import Opportunities from "./components/Opportunities";
 import Footer from "./components/Footer";
 import AboutPage from "./pages/AboutPage";
 import EventsPage from "./pages/EventsPage";
@@ -35,6 +35,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/opportunities" element={<Opportunities />} />
         {/* <Route path="/resources" element={<Resources />} /> */}
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
