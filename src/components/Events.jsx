@@ -57,7 +57,7 @@ const Events = () => {
               {/* Featured Event Image */}
               <div className="w-full lg:w-1/2 overflow-hidden rounded-lg shadow-lg">
                 <img
-                  src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/Instagram%20Post-JcHLJvTQ8XHJpNHfo3bLJtxzSyoMW6.png"
+                  src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code%20titans.jpg"
                   className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
                   alt="Hack The Verse 2.0"
                 />
@@ -66,12 +66,22 @@ const Events = () => {
               {/* Featured Event Details */}
               <div className="w-full lg:w-1/2 text-left">
                 <h2 className="text-2xl font-bold text-emerald-400 mb-3">
-                  Hack-4-Mini 2.0
+                  CodeOholics Executive Hiring
                 </h2>
                 <p className="text-gray-300 mb-4 leading-relaxed">
-                  Hack-4-Mini 2.0 is the second edition of CodeOholics' flagship national-level online hackathon, designed to celebrate innovation, collaboration, and real-world problem solving. Hosted on Unstop, this event brings together bright minds from across India in a battle of brains, creativity, and coding.
-
-Hack-4-Mini is a premier 24-hour national-level online hackathon that brings together over 2000 brilliant minds from 28 states and 7 union territories, creating a digital arena where innovation knows no boundaries.
+                  🚨 CODEOHOLICS COMMUNITY RECRUITMENT 🚨 Presenting CODE TITANS
+                  — the official Executive Team of Codeoholics Community at CMR
+                  Technical Campus. It’s your opportunity to Lead. Create.
+                  Innovate. Teams you can apply for: • Content Team – Script
+                  writing, video creation, and storytelling • Design Team –
+                  Posters, branding, UI/UX and visual creativity • Dev/CP Team –
+                  Web/app development and competitive programming • PR/Events
+                  Team – Promotions, social media handling, event coordination •
+                  Technical Team – Backend support, tech solutions, and systems
+                  management ⚠ Only 20 registrations left! Once slots are
+                  filled, forms will be closed — possibly before the deadline.
+                  Apply now to secure your spot! 📅 Application Deadline (if
+                  slots remain): 5th August 2025
                 </p>
                 <div className="flex flex-col gap-2 text-gray-300 mb-6">
                   <div className="flex items-center gap-2">
@@ -89,7 +99,7 @@ Hack-4-Mini is a premier 24-hour national-level online hackathon that brings tog
                       />
                     </svg>
                     <span>
-                      <strong>Date:</strong> 26th May, 2025
+                      <strong>Date:</strong> 5th August, 2025
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -113,12 +123,12 @@ Hack-4-Mini is a premier 24-hour national-level online hackathon that brings tog
                       />
                     </svg>
                     <span>
-                      <strong>Venue:</strong> Online 
+                      <strong>Venue:</strong> Hybrid
                     </span>
                   </div>
                 </div>
                 <a
-                  href="https://unstop.com/p/hack-4-mini-2nd-edition-cmr-technical-campus-cmrctc-telangana-1477021"
+                  href="https://forms.gle/B5Fbyt4zyjZVEhc87"
                   className="inline-block px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl"
                   target="_blank"
                   rel="noopener noreferrer"

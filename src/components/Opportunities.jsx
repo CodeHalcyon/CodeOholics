@@ -22,6 +22,16 @@ const Opportunities = () => {
     const fetchOpportunities = async () => {
       const data = [
         {
+          id: 2,
+          title: "CodeOholics Executive Hiring",
+          description: `
+            About the Opportunity: Join CODE TITANS — the executive team of Codeoholics at CMR Technical Campus! Lead, create, and innovate across content, design, dev/CP, PR/events, and tech teams. Only 20 spots left—apply before slots run out or by 5th August 2025!
+            `,
+          date: "August 5, 2025",
+          location: "Hybrid",
+          applyLink: "https://forms.gle/B5Fbyt4zyjZVEhc87",
+        },
+        {
           id: 1,
           title: "Hack-4-Mini 2.0 Campus Ambassador",
           description: `
@@ -30,7 +40,7 @@ const Opportunities = () => {
           date: "May 19, 2025",
           location: "Online",
           applyLink: "https://unstop.com/internships/campus-ambassador-internship-cmr-technical-campus-cmrctc-telangana-1480982",
-        },
+        }
       ];
       setOpportunities(data);
     };
@@ -76,6 +86,7 @@ const Opportunities = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
+            
               <h2 className="text-2xl font-semibold text-emerald-400 mb-2">
                 {opp.title}
               </h2>

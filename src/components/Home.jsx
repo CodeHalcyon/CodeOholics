@@ -10,17 +10,31 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Home = () => {
   // Popup Modal State
   const [showModal, setShowModal] = useState(true);
-  const popupImage = "https://etvqaruci3mfadph.public.blob.vercel-storage.com/your-event-image.jpg";
-  const redirectUrl = "https://unstop.com/p/hack-4-mini-2nd-edition-cmr-technical-campus-cmrctc-telangana-1477021";
+  const popupImage = "https://etvqaruci3mfadph.public.blob.vercel-storage.com/code%20titans.jpg";
+  const redirectUrl = "https://forms.gle/B5Fbyt4zyjZVEhc87";
   
   // Featured Event Data - You can replace with actual event data or fetch from API
   const featuredEvent = {
-    title: "Hack-4-Mini 2.0",
-    date: "May 26-27, 2025",
-    location: "Online",
-    description: "Hack-4-Mini 2.0 is the second edition of CodeOholics' flagship national-level online hackathon, designed to celebrate innovation, collaboration, and real-world problem solving. Hosted on Unstop, this event brings together bright minds from across India in a battle of brains, creativity, and coding. Hack-4-Mini is a premier 24-hour national-level online hackathon that brings together over 2000 brilliant minds from 28 states and 7 union territories, creating a digital arena where innovation knows no boundaries.",
-    registerLink: "https://unstop.com/p/hack-4-mini-2nd-edition-cmr-technical-campus-cmrctc-telangana-1477021",
-    image: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/Instagram%20Post-JcHLJvTQ8XHJpNHfo3bLJtxzSyoMW6.png" // Replace with your actual image path
+    title: "CodeOholics Executive Hiring",
+    date: "August 5th, 2025",
+    location: "Hybrid",
+    description: `🚨 CODEOHOLICS COMMUNITY RECRUITMENT 🚨
+Presenting CODE TITANS — the official Executive Team of Codeoholics Community at CMR Technical Campus.
+
+It’s your opportunity to Lead. Create. Innovate.
+
+Teams you can apply for:
+• Content Team – Script writing, video creation, and storytelling
+• Design Team – Posters, branding, UI/UX and visual creativity
+• Dev/CP Team – Web/app development and competitive programming
+• PR/Events Team – Promotions, social media handling, event coordination
+• Technical Team – Backend support, tech solutions, and systems management
+
+⚠ Only 20 registrations left! Once slots are filled, forms will be closed — possibly before the deadline. Apply now to secure your spot!
+
+📅 Application Deadline (if slots remain): 5th August 2025`,
+    registerLink: "https://forms.gle/B5Fbyt4zyjZVEhc87",
+    image: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/code%20titans.jpg" // Replace with your actual image path
   };
 
   gsap.registerPlugin(useGSAP);

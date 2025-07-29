@@ -17,8 +17,8 @@ function App() {
 
   // You can customize these values
   const popupImage =
-    "https://etvqaruci3mfadph.public.blob.vercel-storage.com/Instagram%20Post-JcHLJvTQ8XHJpNHfo3bLJtxzSyoMW6.png"; // Replace with your actual image URL
-  const redirectUrl = "https://unstop.com/p/hack-4-mini-2nd-edition-cmr-technical-campus-cmrctc-telangana-1477021";
+    "https://etvqaruci3mfadph.public.blob.vercel-storage.com/code%20titans.jpg"; // Replace with your actual image URL
+  const redirectUrl = "https://forms.gle/B5Fbyt4zyjZVEhc87";
   return (
     <>
       {showModal && (
