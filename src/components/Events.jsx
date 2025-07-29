@@ -58,7 +58,7 @@ const Events = () => {
               <div className="w-full lg:w-1/2 overflow-hidden rounded-lg shadow-lg">
                 <img
                   src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code%20titans.jpg"
-                  className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   alt="Hack The Verse 2.0"
                 />
               </div>
@@ -66,7 +66,7 @@ const Events = () => {
               {/* Featured Event Details */}
               <div className="w-full lg:w-1/2 text-left">
                 <h2 className="text-2xl font-bold text-emerald-400 mb-3">
-                  CodeOholics Executive Hiring
+                  Code Titans - CodeOholics Executive Hiring
                 </h2>
                 <p className="text-gray-300 mb-4 leading-relaxed">
                   🚨 CODEOHOLICS COMMUNITY RECRUITMENT 🚨 Presenting CODE TITANS

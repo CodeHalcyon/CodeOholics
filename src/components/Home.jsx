@@ -15,7 +15,7 @@ const Home = () => {
   
   // Featured Event Data - You can replace with actual event data or fetch from API
   const featuredEvent = {
-    title: "CodeOholics Executive Hiring",
+    title: "Code Titans - CodeOholics Executive Hiring",
     date: "August 5th, 2025",
     location: "Hybrid",
     description: `🚨 CODEOHOLICS COMMUNITY RECRUITMENT 🚨

@@ -23,7 +23,7 @@ const Opportunities = () => {
       const data = [
         {
           id: 2,
-          title: "CodeOholics Executive Hiring",
+          title: "Code Titans - CodeOholics Executive Hiring",
           description: `
             About the Opportunity: Join CODE TITANS — the executive team of Codeoholics at CMR Technical Campus! Lead, create, and innovate across content, design, dev/CP, PR/events, and tech teams. Only 20 spots left—apply before slots run out or by 5th August 2025!
             `,
