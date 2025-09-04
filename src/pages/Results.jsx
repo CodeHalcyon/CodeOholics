@@ -353,7 +353,7 @@ const Results = () => {
                     {student.Name.toUpperCase()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-mono">
-                    {student["Roll Number"]}
+                    {student["Roll Number"].toUpperCase()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                     <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">

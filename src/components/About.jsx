@@ -435,38 +435,92 @@ const About = () => {
           <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
             <div ref={addToCurrentTeamRefs}>
               <CurrentTeamMember
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/farhan-db5xzE7xqfwmAYF3uPDlkXA7auZy3L.webp"
+                linkedin="https://www.linkedin.com/in/chetan-sirigiri/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/chetan-ykTVeIxZoZmEe5rm2voHxrdVAVJMVc.webp"
                 role="President"
-                name="Farhan Ahmed"
-                desc="Leading the community to new heights with innovation and collaboration."
-                linkedin="https://www.linkedin.com/in/farhan-ahmed-63324b242/"
+                name="Chetan Sirigiri"
+                desc="Driving technical innovation and mentoring developers."
               />
             </div>
             <div ref={addToCurrentTeamRefs}>
               <CurrentTeamMember
-                linkedin="https://www.linkedin.com/in/leo-nikhil-mothukuri-5169b021a/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/leo-26vkeg3lOwZ7bgdlcXpNjd2JkJRd6V.webp"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/farhan-db5xzE7xqfwmAYF3uPDlkXA7auZy3L.webp"
                 role="Vice President"
-                name="Leo Nikhil"
+                name="K. Nikhil"
                 desc="Ensuring a smooth experience for all members and organizing major events."
+                linkedin="https://www.linkedin.com/in/nikhil-kshirasagar08/"
               />
             </div>
             <div ref={addToCurrentTeamRefs}>
               <CurrentTeamMember
-                linkedin="https://www.linkedin.com/in/moiduddinahmed-79a94923b/"
+                linkedin="https://www.linkedin.com/in/mohammad-kammar-ahmed/"
                 src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
                 role="General Secretary"
-                name="Moiduddin Ahmed"
+                name="Kammar Ahmed"
                 desc="Managing records, communications, and administrative tasks."
               />
             </div>
             <div ref={addToCurrentTeamRefs}>
               <CurrentTeamMember
-                linkedin="https://www.linkedin.com/in/chetan-sirigiri/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/chetan-ykTVeIxZoZmEe5rm2voHxrdVAVJMVc.webp"
-                role="Development Lead"
-                name="Chetan Sirigiri"
-                desc="Driving technical innovation and mentoring developers."
+                linkedin="https://www.linkedin.com/in/bhavish-ankam-b5446528b/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/leo-26vkeg3lOwZ7bgdlcXpNjd2JkJRd6V.webp"
+                role="Web Dev Lead"
+                name="Bhavish"
+                desc="Tech geek"
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                linkedin="https://www.linkedin.com/in/k-sruti-1733b7290/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
+                role="CP Lead"
+                name="Sai Sruti"
+                desc="Competetive Programming runs in blood"
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                linkedin="https://www.linkedin.com/in/yashmdj/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/leo-26vkeg3lOwZ7bgdlcXpNjd2JkJRd6V.webp"
+                role="Technical Lead"
+                name="Yashwanth"
+                desc="Ensuring a smooth experience for all members and organizing major events."
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                linkedin="https://www.linkedin.com/in/anileshwar/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
+                role="App Lead"
+                name="Anileshwar"
+                desc="App developer"
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                linkedin="https://www.linkedin.com/in/arnav-varahabhatla-4348b1291/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/leo-26vkeg3lOwZ7bgdlcXpNjd2JkJRd6V.webp"
+                role="Events Lead"
+                name="Arnav"
+                desc="Ensuring a smooth experience for all members and organizing major events."
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                linkedin="https://www.linkedin.com/in/karthik-reddy-usham-38a9b8256/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
+                role="PR Lead"
+                name="Karthik Usham"
+                desc="Managing records, communications, and administrative tasks."
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                linkedin="https://www.linkedin.com/in/abdul-rahman18/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
+                role="Design Lead"
+                name="Abdul Rahman"
+                desc="Managing records, communications, and administrative tasks."
               />
             </div>
           </div>
