@@ -8,16 +8,12 @@ const Results = () => {
       "Events Team": "bg-green-100 text-green-800",
       "Design Team": "bg-indigo-100 text-indigo-800",
       "Tech Team": "bg-red-100 text-red-800",
-      DevOps: "bg-yellow-100 text-yellow-800",
-      "UI/UX Design": "bg-pink-100 text-pink-800",
-      Blockchain: "bg-teal-100 text-teal-800",
-      "Game Development": "bg-violet-100 text-violet-800",
     };
 
-    const [search, setSearch] = useState("")
-
+    
     return colorMap[domain] || "bg-gray-100 text-gray-800"; // default color for unmapped domains
   };
+  const [search, setSearch] = useState("");
   const results = [
     {
       "S.No": 1,
@@ -301,13 +297,24 @@ const Results = () => {
     },
   ];
 
-  
+  const filteredResults = results.filter((student) =>
+    Object.values(student)
+      .join(" ")
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
+
   return (
     <div className="container mx-auto p-6 mt-12">
       <h1 className="text-3xl font-bold text-emerald-800 mb-6 text-center">
         Code Titans 2k25
       </h1>
-      <input type="text" placeholder="Search" className="m-3 outline-1 p-2 w-[300px] rounded-sm" onChange={(e)=>{setSearch(e.target.value)}} />
+      <input
+        type="text"
+        placeholder="Search"
+        className="m-3 outline-1 p-2 w-[300px] rounded-sm border"
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
       <div className="overflow-x-auto shadow-lg rounded-lg">
         <table className="min-w-full bg-white border border-gray-200">
@@ -331,38 +338,49 @@ const Results = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {results.map((student, index) => (
-              <tr
-                key={student["S.No"]}
-                className={`${
-                  index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                } hover:bg-emerald-200 transition-colors duration-200`}
-              >
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {student["S.No"]}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                  {student.Name.toUpperCase()}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-mono">
-                  {student["Roll Number"]}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
-                    {student.Class}
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${getDomainColor(
-                      student.Domain
-                    )}`}
-                  >
-                    {student.Domain}
-                  </span>
+            {filteredResults.length > 0 ? (
+              filteredResults.map((student, index) => (
+                <tr
+                  key={student["S.No"]}
+                  className={`${
+                    index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                  } hover:bg-emerald-200 transition-colors duration-200`}
+                >
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {student["S.No"]}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                    {student.Name.toUpperCase()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-mono">
+                    {student["Roll Number"]}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                    <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                      {student.Class}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${getDomainColor(
+                        student.Domain
+                      )}`}
+                    >
+                      {student.Domain}
+                    </span>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan="5"
+                  className="text-center py-6 text-gray-500 font-medium"
+                >
+                  No results found.
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
