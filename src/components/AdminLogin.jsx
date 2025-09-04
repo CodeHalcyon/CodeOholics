@@ -25,7 +25,6 @@ const AdminLogin = () => {
       console.log(error.message);
     } else {
       uid = data.user.id;
-
       localStorage.setItem("token", data.user.id);
       toast.success("Login successful!");
       navigate("/dashboard"); // Redirect to dashboard after successful login

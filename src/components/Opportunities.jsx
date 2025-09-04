@@ -30,6 +30,7 @@ const Opportunities = () => {
           date: "August 5, 2025",
           location: "Hybrid",
           applyLink: "https://forms.gle/B5Fbyt4zyjZVEhc87",
+          status: true,
         },
         {
           id: 1,
@@ -39,8 +40,10 @@ const Opportunities = () => {
             `,
           date: "May 19, 2025",
           location: "Online",
-          applyLink: "https://unstop.com/internships/campus-ambassador-internship-cmr-technical-campus-cmrctc-telangana-1480982",
-        }
+          applyLink:
+            "https://unstop.com/internships/campus-ambassador-internship-cmr-technical-campus-cmrctc-telangana-1480982",
+          status: false,
+        },
       ];
       setOpportunities(data);
     };
@@ -86,7 +89,6 @@ const Opportunities = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-            
               <h2 className="text-2xl font-semibold text-emerald-400 mb-2">
                 {opp.title}
               </h2>
@@ -99,6 +101,7 @@ const Opportunities = () => {
                   <strong>Location:</strong> {opp.location}
                 </span>
               </div>
+
               <button
                 onClick={() => openModal(opp)}
                 className="inline-block px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-md transition duration-300"

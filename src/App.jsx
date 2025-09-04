@@ -12,6 +12,7 @@ import Dashboard from "./components/Dashboard";
 import PopupModal from "./components/PopupModal";
 import { Analytics } from "@vercel/analytics/react"
 import { useState } from "react";
+import Results from "./pages/Results";
 function App() {
   const [showModal, setShowModal] = useState(true);
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/opportunities" element={<Opportunities />} />
         {/* <Route path="/resources" element={<Resources />} /> */}
         <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/executive-results" element={<Results/>} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
