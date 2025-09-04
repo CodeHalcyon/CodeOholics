@@ -9,32 +9,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Home = () => {
   // Popup Modal State
-  const [showModal, setShowModal] = useState(true);
-  const popupImage = "https://etvqaruci3mfadph.public.blob.vercel-storage.com/code%20titans.jpg";
-  const redirectUrl = "https://forms.gle/B5Fbyt4zyjZVEhc87";
+  const [showModal, setShowModal] = useState(false);
+  const popupImage = "";
+  const redirectUrl = "";
   
   // Featured Event Data - You can replace with actual event data or fetch from API
   const featuredEvent = {
-    title: "Code Titans - CodeOholics Executive Hiring",
-    date: "August 5th, 2025",
-    location: "Hybrid",
-    description: `🚨 CODEOHOLICS COMMUNITY RECRUITMENT 🚨
-Presenting CODE TITANS — the official Executive Team of Codeoholics Community at CMR Technical Campus.
-
-It’s your opportunity to Lead. Create. Innovate.
-
-Teams you can apply for:
-• Content Team – Script writing, video creation, and storytelling
-• Design Team – Posters, branding, UI/UX and visual creativity
-• Dev/CP Team – Web/app development and competitive programming
-• PR/Events Team – Promotions, social media handling, event coordination
-• Technical Team – Backend support, tech solutions, and systems management
-
-⚠ Only 20 registrations left! Once slots are filled, forms will be closed — possibly before the deadline. Apply now to secure your spot!
-
-📅 Application Deadline (if slots remain): 5th August 2025`,
-    registerLink: "https://forms.gle/B5Fbyt4zyjZVEhc87",
-    image: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/code%20titans.jpg" // Replace with your actual image path
+    title: "",
+    date: "",
+    location: "",
+    description: ``,
+    registerLink: "",
+    image: "" // Replace with your actual image path
   };
 
   gsap.registerPlugin(useGSAP);
@@ -71,7 +57,7 @@ Teams you can apply for:
     <>
         
       {/* Featured Event Section */}
-      <div id="featured-event-section" className="bg-gray-900 py-16 px-4 md:px-8">
+      {/* <div id="featured-event-section" className="bg-gray-900 py-16 px-4 md:px-8">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="event-details space-y-6">
@@ -130,7 +116,7 @@ Teams you can apply for:
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       
       <div className="relative h-screen w-screen flex items-center justify-center bg-gray-900">
         {/* Background Image with Green Overlay */}
