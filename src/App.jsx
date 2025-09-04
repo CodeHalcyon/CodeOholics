@@ -14,12 +14,11 @@ import { Analytics } from "@vercel/analytics/react"
 import { useState } from "react";
 import Results from "./pages/Results";
 function App() {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   // You can customize these values
-  const popupImage =
-    "https://etvqaruci3mfadph.public.blob.vercel-storage.com/code%20titans.jpg"; // Replace with your actual image URL
-  const redirectUrl = "https://forms.gle/B5Fbyt4zyjZVEhc87";
+  const popupImage =""; // Replace with your actual image URL
+  const redirectUrl = "";
   return (
     <>
       {showModal && (

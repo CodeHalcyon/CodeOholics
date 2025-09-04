@@ -9,19 +9,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Home = () => {
   // Popup Modal State
-  const [showModal, setShowModal] = useState(false);
-  const popupImage = "";
-  const redirectUrl = "";
+  // const [showModal, setShowModal] = useState(true);
+  // const popupImage = "";
+  // const redirectUrl = "";
   
-  // Featured Event Data - You can replace with actual event data or fetch from API
-  const featuredEvent = {
-    title: "",
-    date: "",
-    location: "",
-    description: ``,
-    registerLink: "",
-    image: "" // Replace with your actual image path
-  };
+  // // Featured Event Data - You can replace with actual event data or fetch from API
+  // const featuredEvent = {
+  //   title: "",
+  //   date: "",
+  //   location: "",
+  //   description: ``,
+  //   registerLink: "",
+  //   image: "" // Replace with your actual image path
+  // };
 
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
