@@ -8,6 +8,7 @@ import {
   FaUsers,
   FaLightbulb,
   FaRocket,
+  FaGithub
 } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -52,7 +53,7 @@ const MemberCard = ({ name, src, linkedin, instagram }) => (
 );
 
 // Current Team Member Component with elegant styling
-const CurrentTeamMember = ({ name, src, role, desc, linkedin }) => (
+const CurrentTeamMember = ({ name, src, role, desc, linkedin, github }) => (
   <div className="flex w-full flex-col md:flex-row items-center md:items-start gap-6 bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-transparent transition-all duration-300 hover:border-emerald-500/20">
     <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-emerald-500/30">
       <img src={src} alt={name} className="h-full w-full object-cover" />
@@ -61,17 +62,30 @@ const CurrentTeamMember = ({ name, src, role, desc, linkedin }) => (
       <h3 className="text-xl font-medium text-white">{name}</h3>
       <p className="text-emerald-400 font-medium">{role}</p>
       <p className="mt-2 text-gray-300">{desc}</p>
-      {linkedin && (
-        <a
-          href={linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm text-white transition-all duration-300 hover:bg-white/20"
-        >
-          <FaLinkedin size={16} />
-          <span>Connect</span>
-        </a>
-      )}
+      <div className="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
+        {linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm text-white transition-all duration-300 hover:bg-white/20"
+          >
+            <FaLinkedin size={16} />
+            <span>Connect</span>
+          </a>
+        )}
+        {github && (
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm text-white transition-all duration-300 hover:bg-white/20"
+          >
+            <FaGithub size={16} />
+            <span>GitHub</span>
+          </a>
+        )}
+      </div>
     </div>
   </div>
 );
@@ -435,92 +449,99 @@ const About = () => {
           <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
             <div ref={addToCurrentTeamRefs}>
               <CurrentTeamMember
+                github="https://github.com/CodeHalcyon"
                 linkedin="https://www.linkedin.com/in/chetan-sirigiri/"
                 src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/chetan-ykTVeIxZoZmEe5rm2voHxrdVAVJMVc.webp"
                 role="President"
                 name="Chetan Sirigiri"
-                desc="Driving technical innovation and mentoring developers."
+                desc="Leading the team with vision and driving innovation at Codeoholics."
               />
             </div>
             <div ref={addToCurrentTeamRefs}>
               <CurrentTeamMember
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/farhan-db5xzE7xqfwmAYF3uPDlkXA7auZy3L.webp"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/Nikhil.jpg"
                 role="Vice President"
                 name="K. Nikhil"
-                desc="Ensuring a smooth experience for all members and organizing major events."
                 linkedin="https://www.linkedin.com/in/nikhil-kshirasagar08/"
+                desc="Supporting leadership and ensuring smooth execution of initiatives."
               />
             </div>
             <div ref={addToCurrentTeamRefs}>
               <CurrentTeamMember
                 linkedin="https://www.linkedin.com/in/mohammad-kammar-ahmed/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/-k.jpg"
                 role="General Secretary"
                 name="Kammar Ahmed"
-                desc="Managing records, communications, and administrative tasks."
-              />
-            </div>
-            <div ref={addToCurrentTeamRefs}>
-              <CurrentTeamMember
-                linkedin="https://www.linkedin.com/in/bhavish-ankam-b5446528b/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/leo-26vkeg3lOwZ7bgdlcXpNjd2JkJRd6V.webp"
-                role="Web Dev Lead"
-                name="Bhavish"
-                desc="Tech geek"
-              />
-            </div>
-            <div ref={addToCurrentTeamRefs}>
-              <CurrentTeamMember
-                linkedin="https://www.linkedin.com/in/k-sruti-1733b7290/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
-                role="CP Lead"
-                name="Sai Sruti"
-                desc="Competetive Programming runs in blood"
-              />
-            </div>
-            <div ref={addToCurrentTeamRefs}>
-              <CurrentTeamMember
-                linkedin="https://www.linkedin.com/in/yashmdj/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/leo-26vkeg3lOwZ7bgdlcXpNjd2JkJRd6V.webp"
-                role="Technical Lead"
-                name="Yashwanth"
-                desc="Ensuring a smooth experience for all members and organizing major events."
-              />
-            </div>
-            <div ref={addToCurrentTeamRefs}>
-              <CurrentTeamMember
-                linkedin="https://www.linkedin.com/in/anileshwar/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
-                role="App Lead"
-                name="Anileshwar"
-                desc="App developer"
-              />
-            </div>
-            <div ref={addToCurrentTeamRefs}>
-              <CurrentTeamMember
-                linkedin="https://www.linkedin.com/in/arnav-varahabhatla-4348b1291/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/leo-26vkeg3lOwZ7bgdlcXpNjd2JkJRd6V.webp"
-                role="Events Lead"
-                name="Arnav"
-                desc="Ensuring a smooth experience for all members and organizing major events."
+                desc="Coordinating operations and managing communication within the team."
               />
             </div>
             <div ref={addToCurrentTeamRefs}>
               <CurrentTeamMember
                 linkedin="https://www.linkedin.com/in/karthik-reddy-usham-38a9b8256/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/karthik.jpg"
                 role="PR Lead"
                 name="Karthik Usham"
-                desc="Managing records, communications, and administrative tasks."
+                desc="Building the community’s presence through impactful public relations."
+                github="https://github.com/Karthik-reddie"
               />
             </div>
             <div ref={addToCurrentTeamRefs}>
               <CurrentTeamMember
+                github="https://github.com/2005bhavish"
+                linkedin="https://www.linkedin.com/in/bhavish-ankam-b5446528b/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/Bhavish.jpeg"
+                role="Web Dev Lead"
+                name="Bhavish"
+                desc="Crafting engaging and functional web experiences for the community."
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                github="https://github.com/anileshwar12"
+                linkedin="https://www.linkedin.com/in/anileshwar/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/Anileshwar.jpg"
+                role="App Lead"
+                name="Anileshwar"
+                desc="Driving mobile innovation by building powerful and user-friendly apps."
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                github="https://github.com/sruti1234"
+                linkedin="https://www.linkedin.com/in/k-sruti-1733b7290/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/Sruti.jpeg"
+                role="CP Lead"
+                name="Sai Sruti"
+                desc="Guiding members in problem-solving and excelling in competitive programming."
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                github="https://github.com/Yashwanthmdj"
+                linkedin="https://www.linkedin.com/in/yashmdj/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/Yashwanth.png"
+                role="Technical Lead"
+                name="Yashwanth"
+                desc="Providing technical expertise and mentoring in advanced technologies."
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                linkedin="https://www.linkedin.com/in/arnav-varahabhatla-4348b1291/"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/Arnav.jpg"
+                role="Events Lead"
+                name="Arnav"
+                desc="Organizing creative and impactful events for learning and collaboration."
+              />
+            </div>
+            <div ref={addToCurrentTeamRefs}>
+              <CurrentTeamMember
+                github="https://github.com/abdul-rahman18"
                 linkedin="https://www.linkedin.com/in/abdul-rahman18/"
-                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/moid-TyErtPFUyn7rZ01zIBj9M6niIw5Jm3.webp"
+                src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/Abdul%20Rahman.jpg"
                 role="Design Lead"
                 name="Abdul Rahman"
-                desc="Managing records, communications, and administrative tasks."
+                desc="Designing engaging visuals and branding to bring ideas to life."
               />
             </div>
           </div>

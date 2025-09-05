@@ -5,6 +5,7 @@ import {
   FaLinkedin,
   FaGithub,
   FaTwitter,
+  FaDiscord
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import supabase from "../config/supabaseConfig";
@@ -47,11 +48,18 @@ const Footer = () => {
               <FaGithub size={22} />
             </a>
             <a
-              href="https://linkedin.com/in/codeoholics"
+              href="https://www.linkedin.com/company/codeoholics-club-cmrtc/"
               target="_blank"
               className="text-emerald-300/70 hover:text-white transition-colors duration-300"
             >
               <FaLinkedin size={22} />
+            </a>
+            <a
+              href="https://discord.gg/rcgAfpuP"
+              target="_blank"
+              className="text-emerald-300/70 hover:text-white transition-colors duration-300"
+            >
+              <FaDiscord size={22} />
             </a>
           </div>
         </div>
