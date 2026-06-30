@@ -1,15 +1,10 @@
-import supabase from "../config/supabaseConfig";
+import eventsData from "../events.json";
 
 const getEvents = async () => {
-    const { data, error } = await supabase
-        .from("events")
-        .select("*")
-        .order('date', { ascending: false });
-    
-    if (error) console.log(error);
-    else console.log(data);
-    
-    return data;
+    const events = eventsData.events.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+    );
+    return events;
 }
 
 export default getEvents;

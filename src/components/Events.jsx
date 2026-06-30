@@ -5,228 +5,162 @@ import getEvents from "../Helper/getEvents";
 const Events = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true); // Track loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Start loading
+      setLoading(true);
       const eventData = await getEvents();
-      if (eventData) setEvents(eventData); // Ensure data is an array
-      setLoading(false); // Stop loading
+      if (eventData) setEvents(eventData);
+      setLoading(false);
     };
-
     fetchData();
   }, []);
+
   const filteredEvents =
     events?.filter((event) =>
       event.title.toLowerCase().includes(searchQuery.toLowerCase())
     ) || [];
 
-  console.log(filteredEvents);
-
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-gray-950 min-h-screen">
-      {/* Hero Section with Background Pattern */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-emerald-900 opacity-30"></div>
-          <div className="h-full w-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0ibm9uZSI+PC9yZWN0Pgo8cGF0aCBkPSJNMzAgMzAgTDYwIDMwIEw2MCA2MCBMMzAgNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEyYjk4MSIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+Cjwvc3ZnPg==')]"></div>
-        </div>
-
-        {/* Upcoming Event Section */}
-        <motion.div
-          className="flex flex-col items-center pt-24 pb-16 px-5 relative z-10"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex flex-col items-center gap-2 mb-8">
-            <h1 className="font-bold text-4xl text-emerald-400">
+    <div className="bg-white min-h-screen">
+      {/* Upcoming Event Section */}
+      <div className="bg-gray-50 border-b border-gray-100">
+        <div className="container mx-auto px-5 pt-28 pb-16">
+          <motion.div
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">Featured</span>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
               Upcoming Event
             </h1>
-            <div className="h-1 w-24 bg-emerald-500 rounded-full"></div>
-          </div>
+          </motion.div>
 
           <motion.div
-            className="w-full max-w-4xl bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-xl border border-gray-700"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
+            className="max-w-4xl mx-auto bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <div className="flex flex-col lg:flex-row gap-6 items-center">
-              {/* Featured Event Image */}
-              <div className="w-full lg:w-1/2 overflow-hidden rounded-lg shadow-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="relative overflow-hidden min-h-[300px]">
                 <img
-                  src="https://etvqaruci3mfadph.public.blob.vercel-storage.com/code%20titans.jpg"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  alt="Hack The Verse 2.0"
+                  src="https://mp9tsgpvqxlsrfiz.public.blob.vercel-storage.com/Hiring.png"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  alt="Core Team Hiring 2K26"
                 />
               </div>
-
-              {/* Featured Event Details */}
-              <div className="w-full lg:w-1/2 text-left">
-                <h2 className="text-2xl font-bold text-emerald-400 mb-3">
-                  Code Titans - CodeOholics Executive Hiring
+              <div className="p-8 lg:p-10 flex flex-col justify-center">
+                <span className="inline-block self-start px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded mb-4">
+                  Open Applications
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                  Core Team Hiring 2K26
                 </h2>
-                <p className="text-gray-300 mb-4 leading-relaxed">
-                  🚨 CODEOHOLICS COMMUNITY RECRUITMENT 🚨 Presenting CODE TITANS
-                  — the official Executive Team of Codeoholics Community at CMR
-                  Technical Campus. It’s your opportunity to Lead. Create.
-                  Innovate. Teams you can apply for: • Content Team – Script
-                  writing, video creation, and storytelling • Design Team –
-                  Posters, branding, UI/UX and visual creativity • Dev/CP Team –
-                  Web/app development and competitive programming • PR/Events
-                  Team – Promotions, social media handling, event coordination •
-                  Technical Team – Backend support, tech solutions, and systems
-                  management ⚠ Only 20 registrations left! Once slots are
-                  filled, forms will be closed — possibly before the deadline.
-                  Apply now to secure your spot! 📅 Application Deadline (if
-                  slots remain): 5th August 2025
+                <p className="text-gray-600 text-sm leading-relaxed mb-6 whitespace-pre-line">
+                  🚀 CodeOholics — student-led dev community turning theory into real-world skills through learning-by-doing.
+                  {"\n"}{"\n"}
+                  🛠️ Project-based learning, peer mentorship & open-source collabs
+                  {"\n"}
+                  🏆 Hackathons, bootcamps & workshops at scale
+                  {"\n"}
+                  🌐 1000s of student devs, pan-India presence
+                  {"\n"}
+                  🎯 Vision: Democratize tech education, build a global developer ecosystem
+                  {"\n"}
+                  💡 Mission: Help students build real portfolios, networks & get industry-ready
                 </p>
-                <div className="flex flex-col gap-2 text-gray-300 mb-6">
-                  <div className="flex items-center gap-2">
-                    <svg
-                      className="h-5 w-5 text-emerald-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                    <span>
-                      <strong>Date:</strong> 5th August, 2025
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <svg
-                      className="h-5 w-5 text-emerald-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                    <span>
-                      <strong>Venue:</strong> Hybrid
-                    </span>
-                  </div>
+                <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span><strong className="text-gray-700">Venue:</strong> Online</span>
                 </div>
                 <a
-                  href="https://forms.gle/B5Fbyt4zyjZVEhc87"
-                  className="inline-block px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-md transition-colors duration-300 shadow-lg hover:shadow-xl"
+                  href="https://forms.gle/dUxfQyTAep6hTxSQ9"
+                  className="inline-flex items-center self-start px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-all duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book your spot
+                  Apply Now
+                  <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </a>
               </div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Past Events Section */}
-      <div className="container mx-auto px-5 pt-8 pb-16">
-        <motion.div
-          className="text-center mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="font-bold text-3xl text-emerald-400 mb-2">
-            Past Events
-          </h1>
-          <div className="h-1 w-20 bg-emerald-500 mx-auto rounded-full"></div>
-        </motion.div>
+      <div className="container mx-auto px-5 pt-16 pb-24">
+        <div className="text-center mb-12">
+          <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">Archive</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
+            Past <span className="underline decoration-gray-300 underline-offset-4">Events</span>
+          </h2>
+          <p className="text-gray-500 text-sm mt-3 max-w-md mx-auto">
+            Browse through our workshop, bootcamp, and hackathon history.
+          </p>
+        </div>
 
-        {/* Search Bar */}
-        <div className="flex justify-center mb-8 px-2">
-          <div className="relative w-full max-w-md">
+        <div className="flex justify-center mb-10">
+          <div className="relative w-full max-w-xs">
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
             <input
               type="text"
               placeholder="Search events..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full p-3 pl-10 border border-gray-700 bg-gray-800/80 text-white rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              className="w-full py-2.5 pl-10 pr-4 bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 rounded-full text-sm focus:outline-none focus:border-gray-400 transition-all duration-300"
             />
-            <svg
-              className="h-5 w-5 text-gray-400 absolute left-3 top-3.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
           </div>
         </div>
 
-        {/* Past Events Grid with Animation Stagger */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {filteredEvents.length > 0 ? (
-            filteredEvents.map((event, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (index * 0.1) % 0.5 }}
-              >
-                <EventCard
-                  img={event.src}
-                  title={event.title}
-                  description={event.description}
-                  venue={event.location}
-                  date={event.date}
-                />
-              </motion.div>
-            ))
-          ) : (
-            <div className="col-span-full flex flex-col items-center text-center py-10">
-              <svg
-                className="h-16 w-16 text-gray-600 mb-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                />
-              </svg>
-              <p className="text-gray-400 text-xl">No events found.</p>
-              <p className="text-gray-500 mt-2">Try a different search term.</p>
-            </div>
-          )}
-        </motion.div>
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <div className="w-6 h-6 border-2 border-gray-300 border-t-gray-900 rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredEvents.length > 0 ? (
+              filteredEvents.map((event, index) => (
+                <motion.div
+                  key={event.title + index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: (index * 0.06) % 0.5 }}
+                >
+                  <EventCard
+                    img={event.img}
+                    title={event.title}
+                    description={event.description}
+                    venue={event.venue}
+                    date={event.date}
+                  />
+                </motion.div>
+              ))
+            ) : (
+              <div className="col-span-full flex flex-col items-center text-center py-20">
+                <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <p className="text-gray-500">No events found.</p>
+                <p className="text-gray-400 text-sm mt-1">Try a different search term.</p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -13,35 +13,43 @@ import PopupModal from "./components/PopupModal";
 import { Analytics } from "@vercel/analytics/react"
 import { useState } from "react";
 import Results from "./pages/Results";
+import SplashScreen from "./components/SplashScreen";
 function App() {
-  const [showModal, setShowModal] = useState(false);
+  const [splashDone, setSplashDone] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
-  // You can customize these values
-  const popupImage =""; // Replace with your actual image URL
-  const redirectUrl = "";
+  const popupImage = "https://mp9tsgpvqxlsrfiz.public.blob.vercel-storage.com/Hiring.png";
+  const redirectUrl = "https://forms.gle/dUxfQyTAep6hTxSQ9";
   return (
     <>
-      {showModal && (
-        <PopupModal 
-          imageUrl={popupImage}
-          redirectUrl={redirectUrl}
-          onClose={() => setShowModal(false)}
-        />
+      {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}
+      {splashDone && (
+        <>
+          {showModal && (
+            <PopupModal 
+              imageUrl={popupImage}
+              redirectUrl={redirectUrl}
+              onClose={() => setShowModal(false)}
+            />
+          )}
+          <Navbar />
+          <div className="animate-slideUpFadeIn">
+            <Analytics/>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/events" element={<EventsPage />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/opportunities" element={<Opportunities />} />
+              {/* <Route path="/resources" element={<Resources />} /> */}
+              <Route path="/admin-login" element={<AdminLogin />} />
+              <Route path="/executive-results" element={<Results/>} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+            <Footer />
+          </div>
+        </>
       )}
-      <Navbar />
-      <Analytics/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/events" element={<EventsPage />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/opportunities" element={<Opportunities />} />
-        {/* <Route path="/resources" element={<Resources />} /> */}
-        <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/executive-results" element={<Results/>} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-      <Footer />
     </>
   );
 }

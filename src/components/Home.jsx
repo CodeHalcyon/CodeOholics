@@ -2,151 +2,91 @@ import React, { useState, useEffect } from "react";
 import Hero from "./Hero";
 import Section2 from "./Section2";
 import EventsSection from "./EventsSection";
-import PopupModal from "./PopupModal";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Home = () => {
-  // Popup Modal State
-  // const [showModal, setShowModal] = useState(true);
-  // const popupImage = "";
-  // const redirectUrl = "";
-  
-  // // Featured Event Data - You can replace with actual event data or fetch from API
-  // const featuredEvent = {
-  //   title: "",
-  //   date: "",
-  //   location: "",
-  //   description: ``,
-  //   registerLink: "",
-  //   image: "" // Replace with your actual image path
-  // };
+  const words = ["Coding", "Design", "Problem Solving"];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  gsap.registerPlugin(useGSAP);
-  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    const current = words[wordIndex];
+    let timeout;
 
-  // GSAP animation for the featured event banner
-  useGSAP(() => {
-    gsap.fromTo(
-      ".featured-event",
-      { opacity: 0, y: -20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-    );
-    
-    gsap.fromTo(
-      ".event-details",
-      { opacity: 0, x: -30 },
-      { opacity: 1, x: 0, duration: 0.6, delay: 0.3, ease: "power2.out" }
-    );
-    
-    gsap.fromTo(
-      ".event-image",
-      { opacity: 0, x: 30 },
-      { opacity: 1, x: 0, duration: 0.6, delay: 0.3, ease: "power2.out" }
-    );
-    
-    gsap.fromTo(
-      ".register-btn",
-      { opacity: 0, scale: 0.9 },
-      { opacity: 1, scale: 1, duration: 0.5, delay: 0.6, ease: "back.out(1.7)" }
-    );
-  });
+    if (!isDeleting && displayText === current) {
+      timeout = setTimeout(() => setIsDeleting(true), 1500);
+    } else if (isDeleting && displayText === "") {
+      setIsDeleting(false);
+      setWordIndex((i) => (i + 1) % words.length);
+    } else {
+      timeout = setTimeout(
+        () => {
+          setDisplayText(
+            isDeleting
+              ? current.substring(0, displayText.length - 1)
+              : current.substring(0, displayText.length + 1)
+          );
+        },
+        isDeleting ? 50 : 100
+      );
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, wordIndex]);
 
   return (
     <>
-        
-      {/* Featured Event Section */}
-      {/* <div id="featured-event-section" className="bg-gray-900 py-16 px-4 md:px-8">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="event-details space-y-6">
-              <div className="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-medium">
-                Featured Event
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                {featuredEvent.title}
-              </h2>
-              
-              <div className="flex flex-col sm:flex-row sm:space-x-6 space-y-2 sm:space-y-0">
-                <div className="flex items-center text-gray-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                  </svg>
-                  {featuredEvent.date}
-                </div>
-                
-                <div className="flex items-center text-gray-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                  </svg>
-                  {featuredEvent.location}
-                </div>
-              </div>
-              
-              <p className="text-gray-300 text-lg">
-                {featuredEvent.description}
-              </p>
-              
+      <div className="relative min-h-screen bg-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/hero_image.webp"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/80 to-white/90"></div>
+        </div>
+        <div className="relative min-h-screen flex items-center px-6 md:px-20">
+          <div className="max-w-4xl">
+            <span className="inline-block text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-6 font-body">
+              Student-Led Tech Community
+            </span>
+            <h1 className="font-display text-6xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tight text-gray-900">
+              Unleash Your
+              <br />
+              <span className="inline-block min-w-[6ch] relative">
+                {displayText}
+                <span className="inline-block w-[3px] h-[0.8em] bg-gray-900 ml-1 align-middle animate-blink"></span>
+              </span>
+              {" "}Potential
+              <br />
+              <span className="text-gray-400">with </span>
+              <span className="relative inline-block">
+                <span className="absolute inset-0 bg-gray-900 rounded-[4px_20px_20px_20px] -skew-x-6 scale-105"></span>
+                <span className="relative text-white">CodeOholics</span>
+              </span>
+            </h1>
+            <p className="font-body text-base md:text-lg mt-6 text-gray-500 max-w-xl leading-relaxed font-medium">
+              Dive into a world of innovation, collaboration, and cutting-edge
+              technology. Build real projects, ship real work.
+            </p>
+            <div className="flex gap-4 mt-10">
               <a
-                href={featuredEvent.registerLink}
-                className="register-btn inline-block bg-emerald-500 text-white font-semibold px-8 py-3 rounded-full shadow-md transition-all duration-300 hover:scale-105 hover:bg-emerald-400 hover:shadow-emerald-400/50"
+                href="https://instagram.com/codeoholics"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-flex items-center px-8 py-3.5 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-all duration-300 font-body"
               >
-                Register Now
+                Join our network
+                <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+              <a
+                href="/events"
+                className="inline-flex items-center px-8 py-3.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-full hover:border-gray-900 hover:text-gray-900 transition-all duration-300 font-body"
+              >
+                View Events
               </a>
             </div>
-            
-            <div className="event-image">
-              <div className="relative overflow-hidden rounded-lg shadow-xl group">
-                <img
-                  src={featuredEvent.image || "/api/placeholder/600/400"}
-                  alt={featuredEvent.title}
-                  className="w-full h-[500px] object-cover bg-bottom transform group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-emerald-500/20 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
-                    <span className="text-white font-medium">Limited spots available</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
-      </div> */}
-      
-      <div className="relative h-screen w-screen flex items-center justify-center bg-gray-900">
-        {/* Background Image with Green Overlay */}
-        <img
-          src="/hero_image.webp"
-          loading="lazy"
-          className="absolute h-full w-full object-cover opacity-70"
-          alt="Hero Background"
-        />
-
-        {/* Dark Overlay with Green Tint */}
-        <div className="absolute h-full w-full bg-gradient-to-b from-black/60 to-emerald-900/40"></div>
-
-        {/* Centered Content */}
-        <div className="hero-class relative text-center text-white p-10 bg-gray-900/80 backdrop-blur-md rounded-lg shadow-2xl border border-emerald-500/20">
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-wide">
-            Unleash Your{" "}
-            <span className="text-emerald-400">Coding Potential</span> with{" "}
-            <span className="text-teal-300">CodeOholics</span>
-          </h1>
-          <p className="text-lg md:text-xl mt-4 text-gray-300 max-w-2xl mx-auto">
-            Dive into a world of innovation, collaboration, and cutting-edge
-            technology.
-          </p>
-          <a
-            href="#"
-            className="inline-block mt-6 bg-emerald-500 text-white font-semibold px-8 py-4 rounded-full shadow-md transition-all duration-300 hover:scale-105 hover:bg-emerald-400 hover:shadow-emerald-400/50"
-          >
-            Join our network
-          </a>
         </div>
       </div>
       <Hero />

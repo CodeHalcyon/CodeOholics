@@ -2,28 +2,28 @@ import React from 'react'
 import { Linkedin, Instagram } from 'lucide-react'
 const MemberCard = (props) => {
   return (
-    <>
-      <div className='bg-black/20 hover:bg-black text-white w-[300px] p-5 flex flex-col items-start gap-5 transition-all ease-in hover:rounded-2xl opacity-90 hover:opacity-100'>
-        <div>
-          <img src={props.src} alt="" />
-
-          {/* <UserRound size={150} strokeWidth={1.5} /> */}
-        </div>
-        <div><h1 className='text-xl font-bold text-cyan-300'>{props.name}</h1>
-          <h3 className='text-sm mb-3 text-purple-400 relative inline-block after:content-[""] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full'>
-            Founder
-          </h3>
-
-          <p className='text-gray-400'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore aut deleniti incidunt, magnam doloribus quia error in ut velit! Similique.</p></div>
-        <div className='flex gap-4'>
-          <a href={props.instagram} target='_blank'><Instagram size={24} strokeWidth={1.5} /></a>
-          <a href={props.linkedin} target='_blank'><Linkedin size={24} color="#2d56fb" strokeWidth={1.5} /></a>
+    <div className='group relative overflow-hidden rounded-xl bg-white border border-gray-200 transition-all duration-300 hover:shadow-lg'>
+      <div className="aspect-[3/4] overflow-hidden">
+        <img src={props.src} alt={props.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+      </div>
+      <div className="p-4">
+        <h3 className="text-base font-semibold text-gray-900">{props.name}</h3>
+        {props.role && <p className="text-xs text-gray-500 mt-0.5">{props.role}</p>}
+        <div className="flex gap-3 mt-3">
+          {props.instagram && (
+            <a href={props.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 transition-colors">
+              <Instagram size={16} />
+            </a>
+          )}
+          {props.linkedin && (
+            <a href={props.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 transition-colors">
+              <Linkedin size={16} />
+            </a>
+          )}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
 export default MemberCard
-
-
