@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "./Hero";
 import Section2 from "./Section2";
 import EventsSection from "./EventsSection";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Home = () => {
+  const stackRef = useRef(null);
+
   const words = ["Coding", "Design", "Problem Solving"];
   const [wordIndex, setWordIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
@@ -34,9 +40,38 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, wordIndex]);
 
+  useEffect(() => {
+    const panels = stackRef.current?.querySelectorAll(".stack-panel");
+    if (!panels) return;
+
+    const ctx = gsap.context(() => {
+      panels.forEach((panel, i) => {
+        if (i === 0) return;
+        gsap.fromTo(panel,
+          { borderRadius: "0rem", boxShadow: "0 0 0 0 rgba(0,0,0,0)" },
+          {
+            borderRadius: "1.5rem",
+            boxShadow: "0 -4px 24px rgba(0,0,0,0.12)",
+            ease: "none",
+            scrollTrigger: {
+              trigger: panel,
+              start: "top bottom",
+              end: "top top",
+              scrub: true,
+              invalidateOnRefresh: true,
+            },
+          }
+        );
+      });
+    }, stackRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <>
-      <div className="relative min-h-screen bg-white overflow-hidden">
+    <div ref={stackRef} className="relative">
+      {/* Section 1: Main Hero */}
+      <section className="stack-panel sticky top-0 min-h-screen z-10 bg-white overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/hero_image.webp"
@@ -88,11 +123,23 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
-      <Hero />
-      <Section2 />
-      <EventsSection />
-    </>
+      </section>
+
+      {/* Section 2: Empowering Coders */}
+      <section className="stack-panel sticky top-0 min-h-[80vh] max-md:min-h-screen z-20 bg-gray-50 overflow-hidden">
+        <Hero />
+      </section>
+
+      {/* Section 3: Unlock Potential */}
+      <section className="stack-panel sticky top-0 min-h-[80vh] max-md:min-h-screen z-30 bg-gray-50 overflow-hidden">
+        <Section2 />
+      </section>
+
+      {/* Section 4: Past Events */}
+      <section className="stack-panel sticky top-0 min-h-[80vh] max-md:min-h-screen z-40 bg-white overflow-hidden">
+        <EventsSection />
+      </section>
+    </div>
   );
 };
 
