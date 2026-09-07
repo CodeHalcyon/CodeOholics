@@ -293,17 +293,63 @@ const About = () => {
             </svg>
 
             {[
-              { name: "Chetan Sirigiri", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/chetan-ykTVeIxZoZmEe5rm2voHxrdVAVJMVc.webp", role: "President", desc: "Leading the team with vision and driving innovation at Codeoholics.", linkedin: "https://www.linkedin.com/in/chetan-sirigiri/", github: "https://github.com/CodeHalcyon" },
-              { name: "K. Nikhil", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/Nikhil.jpg", role: "Vice President", desc: "Supporting leadership and ensuring smooth execution of initiatives.", linkedin: "https://www.linkedin.com/in/nikhil-kshirasagar08/" },
-              { name: "Kammar Ahmed", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/-k.jpg", role: "General Secretary", desc: "Coordinating operations and managing communication within the team.", linkedin: "https://www.linkedin.com/in/mohammad-kammar-ahmed/" },
-              { name: "Karthik Usham", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/karthik.jpg", role: "PR Lead", desc: "Building the community's presence through impactful public relations.", linkedin: "https://www.linkedin.com/in/karthik-reddy-usham-38a9b8256/", github: "https://github.com/Karthik-reddie" },
-              { name: "Bhavish", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/Bhavish.jpeg", role: "Web Dev Lead", desc: "Crafting engaging and functional web experiences for the community.", linkedin: "https://www.linkedin.com/in/bhavish-ankam-b5446528b/", github: "https://github.com/2005bhavish" },
-              { name: "Anileshwar", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/Anileshwar.jpg", role: "App Lead", desc: "Driving mobile innovation by building powerful and user-friendly apps.", linkedin: "https://www.linkedin.com/in/anileshwar/", github: "https://github.com/anileshwar12" },
-              { name: "Sai Sruti", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/Sruti.jpeg", role: "CP Lead", desc: "Guiding members in problem-solving and excelling in competitive programming.", linkedin: "https://www.linkedin.com/in/k-sruti-1733b7290/", github: "https://github.com/sruti1234" },
-              { name: "Yashwanth", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/Yashwanth.png", role: "Technical Lead", desc: "Providing technical expertise and mentoring in advanced technologies.", linkedin: "https://www.linkedin.com/in/yashmdj/", github: "https://github.com/Yashwanthmdj" },
-              { name: "Arnav", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/Arnav.jpg", role: "Events Lead", desc: "Organizing creative and impactful events for learning and collaboration.", linkedin: "https://www.linkedin.com/in/arnav-varahabhatla-4348b1291/" },
-              { name: "Abdul Rahman", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/Abdul%20Rahman.jpg", role: "Design Lead", desc: "Designing engaging visuals and branding to bring ideas to life.", linkedin: "https://www.linkedin.com/in/abdul-rahman18/", github: "https://github.com/abdul-rahman18" },
-            ].map((m, i) => (
+  {
+    name: "Abdul Rahman",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/IMG-20260817-WA0012.jpg.webp",
+    role: "President",
+    desc: "Leading the community with vision, fostering collaboration, and driving growth through technology.",
+    linkedin: "https://www.linkedin.com/in/abdul-rahman18",
+    github: "https://github.com/abdul-rahman18"
+  },
+  {
+    name: "S. Mani Varshith",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Mani.webp",
+    role: "Vice President",
+    desc: "Supporting the team with strategic leadership, coordination, and a strong focus on community growth.",
+    linkedin: "https://www.linkedin.com/in/mani-varshith-454300291",
+    github: "https://share.google/rNBPsKR6gSvWoycLq"
+  },
+  {
+    name: "Maneesh Preetham",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Maneesh.webp",
+    role: "General Secretary",
+    desc: "Keeping the community organized and connected while ensuring smooth coordination across initiatives.",
+    linkedin: "https://www.linkedin.com/in/maneeshpreetham",
+    github: "https://github.com/zerome24"
+  },
+  {
+    name: "Charan",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/file_000000003c9481faa54e1539a9740fa0.webp",
+    role: "Joint Secretary",
+    desc: "Contributing to team coordination and community initiatives while helping turn ideas into meaningful action.",
+    linkedin: "https://www.linkedin.com/in/venkata-sai-charan-464334353",
+    github: "https://github.com/SaiCharan725"
+  },
+  {
+    name: "Nirmal Bhatt",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Nirmal.jpg.webp",
+    role: "Technical Lead",
+    desc: "Driving technical initiatives, mentoring developers, and building innovative solutions through technology.",
+    linkedin: "https://www.linkedin.com/in/nirmal-bhatt-a3854636b",
+    github: "https://github.com/Nirmal-Bhatt"
+  },
+  {
+    name: "Ali Ahmed",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Ali.jpg.webp",
+    role: "Events Lead",
+    desc: "Planning engaging events and creating opportunities for members to learn, connect, and collaborate.",
+    linkedin: "https://in.linkedin.com/in/mohammed-ali-ahmed-q-a6b69b368",
+    github: "https://github.com/yins3n"
+  },
+  {
+    name: "Shaik Yaseen",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Yaseen.webp",
+    role: "Design Lead",
+    desc: "Crafting creative visuals and experiences that bring the community's ideas and identity to life.",
+    linkedin: "https://www.linkedin.com/in/yaseen-%E2%80%93-al-%E2%80%93-shaik-053435338/",
+    github: "https://github.com/shaikyaseen61"
+  }
+].map((m, i) => (
               <React.Fragment key={i}>
                 {/* Mobile row */}
                 <div className="md:hidden relative flex items-start py-7 pl-14">
