@@ -25,13 +25,13 @@ function App() {
       {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}
       {splashDone && (
         <>
-          {showModal && (
+          {/* {showModal && (
             <PopupModal 
               imageUrl={popupImage}
               redirectUrl={redirectUrl}
               onClose={() => setShowModal(false)}
             />
-          )}
+          )} */}
           <Navbar />
           <div className="animate-slideUpFadeIn">
             <Analytics/>
