@@ -11,27 +11,39 @@ import AdminLogin from "./components/AdminLogin";
 import Dashboard from "./components/Dashboard";
 import PopupModal from "./components/PopupModal";
 import { Analytics } from "@vercel/analytics/react"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Results from "./pages/Results";
 import SplashScreen from "./components/SplashScreen";
+import getEvents from "./Helper/getEvents";
 function App() {
   const [splashDone, setSplashDone] = useState(false);
   const [showModal, setShowModal] = useState(true);
 
-  const popupImage = "https://mp9tsgpvqxlsrfiz.public.blob.vercel-storage.com/Hiring.png";
-  const redirectUrl = "https://forms.gle/dUxfQyTAep6hTxSQ9";
+  const [featuredEvent, setFeaturedEvent] = useState(null);
+  const [featuredLoaded, setFeaturedLoaded] = useState(false);
+
+  useEffect(() => {
+    getEvents().then((events) => {
+      const featured = events?.find((e) => e.is_featured) || null;
+      setFeaturedEvent(featured);
+      setFeaturedLoaded(true);
+    });
+  }, []);
+
+  const popupImage = featuredEvent?.img;
+  const redirectUrl = featuredEvent?.venue || "https://cmrtc.ac.in";
   return (
     <>
       {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}
       {splashDone && (
         <>
-          {/* {showModal && (
+          {showModal && featuredLoaded && popupImage && (
             <PopupModal 
               imageUrl={popupImage}
               redirectUrl={redirectUrl}
               onClose={() => setShowModal(false)}
             />
-          )} */}
+          )}
           <Navbar />
           <div className="animate-slideUpFadeIn">
             <Analytics/>

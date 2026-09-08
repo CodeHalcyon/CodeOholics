@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import getOpportunities from "../Helper/getOpportunities";
 
 const Opportunities = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,48 +21,7 @@ const Opportunities = () => {
 
   useEffect(() => {
     const fetchOpportunities = async () => {
-      const data = [
-        {
-          id: 3,
-          title: "Core Team Hiring 2K26",
-          description: `
-            🚀 CodeOholics — student-led dev community turning theory into real-world skills through learning-by-doing.
-
-            🛠️ Project-based learning, peer mentorship & open-source collabs
-            🏆 Hackathons, bootcamps & workshops at scale
-            🌐 1000s of student devs, pan-India presence
-            🎯 Vision: Democratize tech education, build a global developer ecosystem
-            💡 Mission: Help students build real portfolios, networks & get industry-ready
-            `,
-          date: "TBD",
-          location: "Online",
-          applyLink: "https://forms.gle/dUxfQyTAep6hTxSQ9",
-          status: true,
-        },
-        {
-          id: 2,
-          title: "Code Titans - CodeOholics Executive Hiring",
-          description: `
-            About the Opportunity: Join CODE TITANS — the executive team of Codeoholics at CMR Technical Campus! Lead, create, and innovate across content, design, dev/CP, PR/events, and tech teams. Only 20 spots left—apply before slots run out or by 5th August 2025!
-            `,
-          date: "August 5, 2025",
-          location: "Hybrid",
-          applyLink: "https://forms.gle/B5Fbyt4zyjZVEhc87",
-          status: false,
-        },
-        {
-          id: 1,
-          title: "Hack-4-Mini 2.0 Campus Ambassador",
-          description: `
-            About the Opportunity: The Hack-4-Mini 2.0 Campus Ambassador Program is a unique opportunity for students to become the face of one of India's leading national-level hackathons, organized by CodeOholics. As a Campus Ambassador, you'll play a pivotal role in promoting Hack-4-Mini 2.0 within your institution.
-            `,
-          date: "May 19, 2025",
-          location: "Online",
-          applyLink:
-            "https://unstop.com/internships/campus-ambassador-internship-cmr-technical-campus-cmrctc-telangana-1480982",
-          status: false,
-        },
-      ];
+      const data = await getOpportunities();
       setOpportunities(data);
     };
     fetchOpportunities();
@@ -155,7 +116,7 @@ const Opportunities = () => {
         </div>
       </div>
 
-      {isModalOpen && selectedOpportunity && (
+      {isModalOpen && selectedOpportunity && createPortal(
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl p-8 max-w-lg w-full relative shadow-xl">
             <button className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-lg" onClick={closeModal}>&times;</button>
@@ -175,7 +136,8 @@ const Opportunities = () => {
               <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

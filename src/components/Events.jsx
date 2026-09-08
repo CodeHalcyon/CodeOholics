@@ -22,6 +22,14 @@ const Events = () => {
       event.title.toLowerCase().includes(searchQuery.toLowerCase())
     ) || [];
 
+  const featuredEvent =
+    events?.find((event) => event.is_featured) || null;
+
+  const dateLabel = (d) => {
+    const opts = { year: "numeric", month: "short", day: "numeric" };
+    return new Date(d + "T00:00:00").toLocaleDateString("en-IN", opts);
+  };
+
   return (
     <div className="bg-white min-h-screen">
       {/* Upcoming Event Section */}
@@ -36,7 +44,7 @@ const Events = () => {
           >
             <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">Featured</span>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
-              Upcoming Event
+              {featuredEvent ? "Upcoming Event" : "Featured Program"}
             </h1>
           </motion.div>
 
@@ -47,34 +55,69 @@ const Events = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="relative overflow-hidden min-h-[300px]">
-                <img
-                  src="https://mp9tsgpvqxlsrfiz.public.blob.vercel-storage.com/Hiring.png"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  alt="Core Team Hiring 2K26"
-                />
+            {featuredEvent ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="relative overflow-hidden min-h-[300px]">
+                  <img
+                    src={featuredEvent.img}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    alt={featuredEvent.title}
+                  />
+                </div>
+                <div className="p-8 lg:p-10 flex flex-col justify-center">
+                  <span className="inline-block self-start px-3 py-1 bg-amber-100 text-amber-700 text-xs font-medium rounded mb-4">
+                    ★ Featured
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                    {featuredEvent.title}
+                  </h2>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-5 whitespace-pre-line">
+                    {featuredEvent.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span><strong className="text-gray-700">Venue:</strong> {featuredEvent.venue}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span><strong className="text-gray-700">Date:</strong> {dateLabel(featuredEvent.date)}</span>
+                  </div>
+                </div>
               </div>
-              <div className="p-8 lg:p-10 flex flex-col justify-center">
-                <span className="inline-block self-start px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded mb-4">
-                  Open Applications
-                </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  Core Team Hiring 2K26
-                </h2>
-                <p className="text-gray-600 text-sm leading-relaxed mb-6 whitespace-pre-line">
-                  🚀 CodeOholics — student-led dev community turning theory into real-world skills through learning-by-doing.
-                  {"\n"}{"\n"}
-                  🛠️ Project-based learning, peer mentorship & open-source collabs
-                  {"\n"}
-                  🏆 Hackathons, bootcamps & workshops at scale
-                  {"\n"}
-                  🌐 1000s of student devs, pan-India presence
-                  {"\n"}
-                  🎯 Vision: Democratize tech education, build a global developer ecosystem
-                  {"\n"}
-                  💡 Mission: Help students build real portfolios, networks & get industry-ready
-                </p>
+            ) : (
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="relative overflow-hidden min-h-[300px]">
+                  <img
+                    src="https://mp9tsgpvqxlsrfiz.public.blob.vercel-storage.com/Hiring.png"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    alt="Core Team Hiring 2K26"
+                  />
+                </div>
+                <div className="p-8 lg:p-10 flex flex-col justify-center">
+                  <span className="inline-block self-start px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded mb-4">
+                    Open Applications
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                    Core Team Hiring 2K26
+                  </h2>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6 whitespace-pre-line">
+                    🚀 CodeOholics — student-led dev community turning theory into real-world skills through learning-by-doing.
+                    {"\n"}{"\n"}
+                    🛠️ Project-based learning, peer mentorship & open-source collabs
+                    {"\n"}
+                    🏆 Hackathons, bootcamps & workshops at scale
+                    {"\n"}
+                    🌐 1000s of student devs, pan-India presence
+                    {"\n"}
+                    🎯 Vision: Democratize tech education, build a global developer ecosystem
+                    {"\n"}
+                    💡 Mission: Help students build real portfolios, networks & get industry-ready
+                  </p>
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -92,7 +135,8 @@ const Events = () => {
                   <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </a>
               </div>
-            </div>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

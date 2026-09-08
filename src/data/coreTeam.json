@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Abdul Rahman",
+    "src": "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/IMG-20260817-WA0012.jpg.webp",
+    "role": "President",
+    "desc": "Leading the community with vision, fostering collaboration, and driving growth through technology.",
+    "linkedin": "https://www.linkedin.com/in/abdul-rahman18",
+    "github": "https://github.com/abdul-rahman18"
+  },
+  {
+    "name": "S. Mani Varshith",
+    "src": "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Mani.webp",
+    "role": "Vice President",
+    "desc": "Supporting the team with strategic leadership, coordination, and a strong focus on community growth.",
+    "linkedin": "https://www.linkedin.com/in/mani-varshith-454300291",
+    "github": "https://share.google/rNBPsKR6gSvWoycLq"
+  },
+  {
+    "name": "Maneesh Preetham",
+    "src": "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Maneesh.webp",
+    "role": "General Secretary",
+    "desc": "Keeping the community organized and connected while ensuring smooth coordination across initiatives.",
+    "linkedin": "https://www.linkedin.com/in/maneeshpreetham",
+    "github": "https://github.com/zerome24"
+  },
+  {
+    "name": "Charan",
+    "src": "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/file_000000003c9481faa54e1539a9740fa0.webp",
+    "role": "Joint Secretary",
+    "desc": "Contributing to team coordination and community initiatives while helping turn ideas into meaningful action.",
+    "linkedin": "https://www.linkedin.com/in/venkata-sai-charan-464334353",
+    "github": "https://github.com/SaiCharan725"
+  },
+  {
+    "name": "Nirmal Bhatt",
+    "src": "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Nirmal.jpg.webp",
+    "role": "Technical Lead",
+    "desc": "Driving technical initiatives, mentoring developers, and building innovative solutions through technology.",
+    "linkedin": "https://www.linkedin.com/in/nirmal-bhatt-a3854636b",
+    "github": "https://github.com/Nirmal-Bhatt"
+  },
+  {
+    "name": "Ali Ahmed",
+    "src": "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Ali.jpg.webp",
+    "role": "Events Lead",
+    "desc": "Planning engaging events and creating opportunities for members to learn, connect, and collaborate.",
+    "linkedin": "https://in.linkedin.com/in/mohammed-ali-ahmed-q-a6b69b368",
+    "github": "https://github.com/yins3n"
+  },
+  {
+    "name": "Shaik Yaseen",
+    "src": "https://etvqaruci3mfadph.public.blob.vercel-storage.com/2026%20team/Yaseen.webp",
+    "role": "Design Lead",
+    "desc": "Crafting creative visuals and experiences that bring the community's ideas and identity to life.",
+    "linkedin": "https://www.linkedin.com/in/yaseen-%E2%80%93-al-%E2%80%93-shaik-053435338/",
+    "github": "https://github.com/shaikyaseen61"
+  }
+]

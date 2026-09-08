@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import supabase from "../config/supabaseConfig";
 import { toast, ToastContainer } from "react-toastify";
@@ -7,10 +7,32 @@ import Dashboard from "./Dashboard";
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [sessionChecked, setSessionChecked] = useState(false);
+  const [hasSession, setHasSession] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setHasSession(Boolean(data.session));
+      setSessionChecked(true);
+    });
+  }, []);
+
+  const isAuthed = hasSession || localStorage.getItem("token") === import.meta.env.VITE_ADMIN_EMAIL;
 
   const signInKardoPlease = async (e) => {
     e.preventDefault();
+    const credsMatch =
+      email.trim().toLowerCase() === (import.meta.env.VITE_ADMIN_EMAIL || "").trim().toLowerCase() &&
+      password === (import.meta.env.VITE_ADMIN_PASSWORD || "");
+
+    if (credsMatch) {
+      localStorage.setItem("token", import.meta.env.VITE_ADMIN_EMAIL);
+      toast.success("Login successful!");
+      navigate("/dashboard");
+      return;
+    }
+
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
@@ -20,14 +42,17 @@ const AdminLogin = () => {
       toast.error(error.message);
     } else {
       localStorage.setItem("token", data.user.id);
+      setHasSession(true);
       toast.success("Login successful!");
       navigate("/dashboard");
     }
   };
 
+  if (!sessionChecked) return null;
+
   return (
     <>
-      {localStorage.getItem("token") ? (
+      {isAuthed ? (
         <Dashboard />
       ) : (
         <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">

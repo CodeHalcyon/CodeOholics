@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   FaPhone,
   FaEnvelope,
@@ -6,27 +6,28 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import supabase from "../config/supabaseConfig";
-import validator from 'validator';
+// import supabase from "../config/supabaseConfig";
+// import validator from 'validator';
 
 const Footer = () => {
-  const [Newsletter, setnewsLetter] = useState("");
-  const handleOnSubmit = async () => {
-    if (!validator.isEmail(Newsletter)) {
-      alert("Please enter a valid email");
-      return;
-    } else {
-      const { data, error } = await supabase
-        .from("newsletter")
-        .insert([{ email: Newsletter }]);
-      if (error) {
-        alert("Some error occured :(...");
-        console.log(error);
-      } else {
-        alert("Newsletter subscribed successfully :...");
-      }
-    }
-  };
+  // Newsletter signup disabled until the newsletter table exists.
+  // const [Newsletter, setnewsLetter] = useState("");
+  // const handleOnSubmit = async () => {
+  //   if (!validator.isEmail(Newsletter)) {
+  //     alert("Please enter a valid email");
+  //     return;
+  //   } else {
+  //     const { data, error } = await supabase
+  //       .from("newsletter")
+  //       .insert([{ email: Newsletter }]);
+  //     if (error) {
+  //       alert("Some error occured :(...");
+  //       console.log(error);
+  //     } else {
+  //       alert("Newsletter subscribed successfully :...");
+  //     }
+  //   }
+  // };
 
   return (
     <footer className="bg-white border-t border-gray-100 text-gray-600 mt-auto py-16 px-6 sm:px-10">
@@ -53,8 +54,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="flex flex-col">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Newsletter signup (disabled) */}
+          {/* <div className="flex flex-col">
             <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-6">
               Newsletter
             </h2>
@@ -82,7 +84,7 @@ const Footer = () => {
                 We respect your privacy. Unsubscribe at any time.
               </p>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex flex-col">
             <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-6">
