@@ -1,43 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+/* ============================================================
+   CODEHOLICS — BRUTAL MAXIMALISM (v6 / React)
+   ink on paper. thick borders. no radius. giant type.
+   ============================================================ */
+
+@theme {
+  --color-paper: #F5F3EE;
+  --color-ink: #111111;
+  --color-muted: #575347;
+  --color-zing: #FFD600;
+  --color-punk: #FF3D7F;
+  --color-acid: #C6FF00;
+  --color-volt: #2B3BFF;
+  --color-signal: #E8232A;
+  --font-display: 'Anton', 'Bebas Neue', Impact, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-out forwards;
+/* ---------- base: flatten + paper ground ---------- */
+* { border-radius: 0 !important; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
+::selection { background: var(--color-punk); color: var(--color-paper); }
+:focus-visible { outline: 3px solid var(--color-volt); outline-offset: 2px; }
+::-webkit-scrollbar { width: 14px; }
+::-webkit-scrollbar-track { background: var(--color-paper); border-left: 3px solid var(--color-ink); }
+::-webkit-scrollbar-thumb { background: var(--color-ink); border: 3px solid var(--color-paper); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-punk); }
 
-@keyframes slideUpFadeIn {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; }
+/* ---------- legacy type hooks ---------- */
+.font-display, .font-hero {
+  font-family: 'Anton', 'Bebas Neue', Impact, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  line-height: .95;
 }
-
-.animate-slideUpFadeIn {
-  animation: slideUpFadeIn 0.8s ease-out forwards;
-}
-
-.font-hero {
-  font-family: 'Space Grotesk', sans-serif;
-}
-
-.font-display {
-  font-family: 'Bebas Neue', sans-serif;
-}
-
 .font-body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* ---------- keyframes (kept for existing usages) ---------- */
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+.animate-fadeIn { animation: fadeIn .3s ease-out forwards; }
+
+@keyframes slideUpFadeIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+.animate-slideUpFadeIn { animation: slideUpFadeIn .7s ease-out forwards; }
+
+@keyframes blink { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0; } }
+.animate-blink { animation: blink 1.1s step-start infinite; }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001s !important;
+  }
+  html { scroll-behavior: auto; }
 }
 
-.animate-blink {
-  animation: blink 1s step-end infinite;
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  font-family: 'Archivo'; font-weight: 800; font-size: .82rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: .9rem 1.5rem; border: 3px solid var(--color-ink); cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease;
+  white-space: nowrap;
 }
+.btn-solid { background: var(--color-ink); color: var(--color-paper); box-shadow: 5px 5px 0 var(--color-volt); }
+.btn-solid:hover { background: var(--color-zing); color: var(--color-ink); box-shadow: 5px 5px 0 var(--color-punk); transform: translate(-2px, -2px); }
+.btn-solid:active { transform: translate(2px, 2px); }
+.btn-outline { background: transparent; color: var(--color-ink); box-shadow: 5px 5px 0 var(--color-ink); }
+.btn-outline:hover { background: var(--color-ink); color: var(--color-paper); box-shadow: none; transform: translate(2px, 2px); }
+.btn-acid { background: var(--color-acid); color: var(--color-ink); box-shadow: 5px 5px 0 var(--color-ink); border-color: var(--color-ink); }
+.btn-acid:hover { background: var(--color-punk); color: var(--color-paper); transform: translate(-2px, -2px); }
+
+/* ---------- labels / chips / stamps ---------- */
+.label-mono {
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: .72rem;
+  letter-spacing: .16em; text-transform: uppercase;
+}
+.chip {
+  display: inline-flex; align-items: center;
+  border: 2px solid var(--color-ink); background: var(--color-paper);
+  padding: .45rem .75rem;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: .66rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  white-space: nowrap;
+}
+.stamp {
+  display: inline-block; background: var(--color-signal); color: var(--color-paper);
+  font-family: 'Anton'; letter-spacing: .08em; font-size: .85rem;
+  border: 3px solid var(--color-ink); padding: .45rem .95rem;
+  box-shadow: 5px 5px 0 var(--color-ink);
+}
+.outline-word { color: transparent; -webkit-text-stroke: 2px var(--color-ink); }
+.hl-box { display: inline-block; background: var(--color-ink); color: var(--color-paper); padding: 0 .12em; box-shadow: 6px 6px 0 var(--color-zing); }
+.hl-acid { background: var(--color-acid); padding: 0 .12em; }
+
+/* ---------- hard cards ---------- */
+.hard-card {
+  border: 3px solid var(--color-ink); background: var(--color-paper);
+  box-shadow: 9px 9px 0 var(--color-ink);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.hard-card:hover { transform: translate(-3px, -3px); box-shadow: 12px 12px 0 var(--color-punk); }
+
+/* ---------- section shell ---------- */
+.sec-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  border-top: 3px solid var(--color-ink); border-bottom: 3px solid var(--color-ink);
+  padding: .6rem 0 .66rem; margin-bottom: 2rem;
+}
+
+/* ---------- tickers ---------- */
+.ticker { overflow: hidden; white-space: nowrap; border-top: 3px solid var(--color-ink); border-bottom: 3px solid var(--color-ink); }
+.ticker-track { display: inline-flex; animation: marquee 28s linear infinite; }
+.ticker-track > span {
+  display: inline-flex; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: .85rem;
+  letter-spacing: .14em; text-transform: uppercase; padding: .8rem 0;
+}
+.ticker-ink { background: var(--color-ink); color: var(--color-paper); }
+.ticker-acid { background: var(--color-acid); color: var(--color-ink); }
+.ticker .sep { margin: 0 1.6rem; color: var(--color-punk); }
+.ticker-acid .sep { color: var(--color-volt); }
+
+/* ---------- gridpaper backdrop ---------- */
+.gridpaper {
+  background-image:
+    linear-gradient(var(--color-ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-ink) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* ---------- hard inputs ---------- */
+.input-hard {
+  width: 100%; padding: .75rem .95rem;
+  background: #fff; border: 3px solid var(--color-ink);
+  font-family: 'Archivo'; font-size: .95rem; color: var(--color-ink);
+  transition: box-shadow .15s ease, background-color .15s ease;
+}
+.input-hard::placeholder { color: #8a8577; }
+.input-hard:focus { outline: none; box-shadow: 4px 4px 0 var(--color-acid); background: var(--color-paper); }
+
+/* ---------- brutal hover lift (no full-card invert) ---------- */
+.flip-row { transition: background-color .15s ease, transform .15s ease; }
+.flip-row:hover {
+  background: rgba(255, 214, 0, 0.16);
+  transform: translate(-2px, -2px);
+}
+.flip-img { filter: grayscale(1) contrast(1.05); transition: filter .18s ease; }
+.flip-card:hover .flip-img { filter: none; }
+
+/* ---------- search input with leading icon ---------- */
+.input-search { padding-left: 2.7rem; }

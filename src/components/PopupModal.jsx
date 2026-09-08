@@ -52,11 +52,11 @@ const PopupModal = ({ imageUrl, redirectUrl, onClose }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 p-4">
       <div
         ref={modalRef}
-        className="relative max-w-sm w-full mx-auto bg-white rounded-xl overflow-hidden shadow-xl animate-fadeIn"
+        className="relative max-w-sm w-full mx-auto bg-paper border-[4px] border-ink shadow-[10px_10px_0_0_var(--color-punk)] overflow-hidden animate-fadeIn"
       >
         <button
           onClick={handleClose}
-          className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 text-gray-700 backdrop-blur-sm hover:bg-gray-100 transition-colors duration-200 z-10 shadow-sm"
+          className="absolute top-2 right-2 w-9 h-9 flex items-center justify-center bg-ink text-paper border-2 border-ink hover:bg-punk transition-colors duration-200 z-10"
           aria-label="Close"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">

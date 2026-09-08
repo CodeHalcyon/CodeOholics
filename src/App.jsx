@@ -45,7 +45,7 @@ function App() {
             />
           )}
           <Navbar />
-          <div className="animate-slideUpFadeIn">
+          <div>
             <Analytics/>
             <Routes>
               <Route path="/" element={<Home />} />

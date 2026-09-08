@@ -1,166 +1,142 @@
 import React from "react";
-import {
-  FaPhone,
-  FaEnvelope,
-  FaLinkedin,
-  FaInstagram,
-} from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-// import supabase from "../config/supabaseConfig";
-// import validator from 'validator';
 
 const Footer = () => {
-  // Newsletter signup disabled until the newsletter table exists.
-  // const [Newsletter, setnewsLetter] = useState("");
-  // const handleOnSubmit = async () => {
-  //   if (!validator.isEmail(Newsletter)) {
-  //     alert("Please enter a valid email");
-  //     return;
-  //   } else {
-  //     const { data, error } = await supabase
-  //       .from("newsletter")
-  //       .insert([{ email: Newsletter }]);
-  //     if (error) {
-  //       alert("Some error occured :(...");
-  //       console.log(error);
-  //     } else {
-  //       alert("Newsletter subscribed successfully :...");
-  //     }
-  //   }
-  // };
+  const top = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-white border-t border-gray-100 text-gray-600 mt-auto py-16 px-6 sm:px-10">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-12 pb-8 border-b border-gray-100">
-          <div className="text-2xl font-bold text-gray-900 mb-6 sm:mb-0">
-            CodeOholics
-          </div>
-          <div className="flex space-x-6">
-            <a
-              href="https://instagram.com/codeoholics"
-              target="_blank"
-              className="text-gray-400 hover:text-gray-900 transition-colors duration-300"
-            >
-              <FaInstagram size={20} />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/codeoholics-club-cmrtc/"
-              target="_blank"
-              className="text-gray-400 hover:text-gray-900 transition-colors duration-300"
-            >
-              <FaLinkedin size={20} />
-            </a>
-          </div>
-        </div>
+    <footer className="relative bg-ink text-paper border-t-4 border-ink overflow-hidden">
+      <span
+        aria-hidden="true"
+        className="absolute -bottom-[0.24em] left-0 right-0 font-display text-[24vw] leading-none text-transparent pointer-events-none select-none"
+        style={{ WebkitTextStroke: "1px rgba(255,255,255,.10)" }}
+      >
+        CODEHOLICS
+      </span>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Newsletter signup (disabled) */}
-          {/* <div className="flex flex-col">
-            <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-6">
-              Newsletter
-            </h2>
-            <p className="text-gray-500 text-sm mb-6">
-              Get the latest updates, resources, and exclusive opportunities
-              from the CodeOholics community.
-            </p>
-            <div className="w-full">
-              <div className="flex flex-col sm:flex-row gap-3 w-full">
-                <input
-                  value={Newsletter}
-                  onChange={(e) => setnewsLetter(e.target.value)}
-                  type="email"
-                  className="outline-none p-3 w-full rounded-md bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 text-sm focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-all duration-300"
-                  placeholder="Enter your email"
-                />
-                <button
-                  onClick={handleOnSubmit}
-                  className="py-3 px-6 rounded-md bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium transition-all duration-300"
-                >
-                  Subscribe
-                </button>
-              </div>
-              <p className="text-xs text-gray-400 mt-3">
-                We respect your privacy. Unsubscribe at any time.
-              </p>
-            </div>
-          </div> */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-8">
+        <p className="label-mono text-acid flex items-center gap-3 mb-4">
+          <span className="inline-block w-12 h-1 bg-punk" aria-hidden="true" />
+          // TRANSMISSION — CMRTC, HYDERABAD
+        </p>
+        <h2 className="font-display text-4xl sm:text-5xl md:text-6xl uppercase mb-8">
+          Talk to <span className="text-zing">the club</span>
+        </h2>
 
-          <div className="flex flex-col">
-            <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-6">
-              Explore
-            </h2>
-            <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+          <div>
+            <h4 className="label-mono text-paper/50 border-b-2 border-paper/25 pb-2 mb-4">
+              Channels
+            </h4>
+            <div className="flex flex-col">
               {[
-                { name: "Home", path: "/" },
-                { name: "About Us", path: "/about" },
-                { name: "Events", path: "/events" },
-                { name: "Opportunities", path: "/opportunities" },
-                { name: "Instagram", path: "https://instagram.com/codeoholics", external: true },
-                { name: "Contact", path: "/contact" },
-              ].map((link, index) => (
+                {
+                  label: "Instagram",
+                  hint: "@codeoholics ↗",
+                  href: "https://instagram.com/codeoholics",
+                  external: true,
+                },
+                {
+                  label: "LinkedIn",
+                  hint: "company/codeoholics-club-cmrtc ↗",
+                  href: "https://www.linkedin.com/company/codeoholics-club-cmrtc/",
+                  external: true,
+                },
+                { label: "Home", hint: "/", to: "/" },
+                { label: "Events", hint: "/events", to: "/events" },
+                { label: "Opportunities", hint: "/opportunities", to: "/opportunities" },
+              ].map((link, i) =>
                 link.external ? (
                   <a
-                    key={index}
-                    href={link.path}
+                    key={i}
+                    href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 text-sm py-1 transition-all duration-300 hover:text-gray-900"
+                    className="flex justify-between items-center gap-4 py-3 border-b border-paper/15 font-bold text-lg hover:text-zing transition-colors"
                   >
-                    {link.name}
+                    {link.label}
+                    <span className="font-mono text-xs font-normal text-paper/50">
+                      {link.hint}
+                    </span>
                   </a>
                 ) : (
                   <NavLink
-                    key={index}
-                    to={link.path}
-                    className="text-gray-500 text-sm py-1 transition-all duration-300 hover:text-gray-900"
+                    key={i}
+                    to={link.to}
+                    className="flex justify-between items-center gap-4 py-3 border-b border-paper/15 font-bold text-lg hover:text-zing transition-colors"
                   >
-                    {link.name}
+                    {link.label}
+                    <span className="font-mono text-xs font-normal text-paper/50">
+                      {link.hint}
+                    </span>
                   </NavLink>
                 )
-              ))}
+              )}
             </div>
           </div>
 
-          <div className="flex flex-col">
-            <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-6">
-              Contact Us
-            </h2>
-            <ul className="space-y-4">
-              <li className="flex items-center gap-3">
-                <FaPhone className="text-gray-400 shrink-0" size={14} />
-                <a
-                  href="tel:+917989842906"
-                  className="text-sm text-gray-500 transition-all duration-300 hover:text-gray-900"
-                >
-                  Chetan Sirigiri (+91 7989842906)
+          <div>
+            <h4 className="label-mono text-paper/50 border-b-2 border-paper/25 pb-2 mb-4">
+              Base
+            </h4>
+            <div className="flex flex-col gap-4 font-mono font-bold text-sm tracking-wide">
+              <span>
+                <span className="text-punk">WHERE</span> · CMRTC, Hyderabad, IN
+              </span>
+              <span>
+                <span className="text-punk">COORD</span> · N17.50 / E78.53
+              </span>
+              <span className="flex items-center gap-3">
+                <FaPhone className="text-punk shrink-0" size={13} />
+                <a href="tel:+917989842906" className="font-body font-bold text-base text-paper hover:text-zing transition-colors">
+                  +91 7989842906
                 </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <FaEnvelope className="text-gray-400 shrink-0" size={14} />
-                <a
-                  href="mailto:codeoholics@cmrtc.ac.in"
-                  className="text-sm text-gray-500 transition-all duration-300 hover:text-gray-900"
-                >
+              </span>
+              <span className="flex items-center gap-3">
+                <FaEnvelope className="text-punk shrink-0" size={13} />
+                <a href="mailto:codeoholics@cmrtc.ac.in" className="font-body font-bold text-base text-paper hover:text-zing transition-colors">
                   codeoholics@cmrtc.ac.in
                 </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <FaInstagram className="text-gray-400 shrink-0" size={14} />
-                <a
-                  href="https://instagram.com/codeoholics"
-                  target="_blank"
-                  className="text-sm text-gray-500 transition-all duration-300 hover:text-gray-900"
-                >
-                  @codeoholics
-                </a>
-              </li>
-            </ul>
+              </span>
+            </div>
+            <div className="flex gap-3 mt-6">
+              <a
+                href="https://instagram.com/codeoholics"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="h-11 w-11 grid place-items-center border-2 border-paper/40 text-paper hover:bg-zing hover:text-ink hover:border-zing transition-colors"
+              >
+                <FaInstagram size={16} />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/codeoholics-club-cmrtc/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="h-11 w-11 grid place-items-center border-2 border-paper/40 text-paper hover:bg-zing hover:text-ink hover:border-zing transition-colors"
+              >
+                <FaLinkedin size={16} />
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400">
-          <div>© {new Date().getFullYear()} CodeOholics. All rights reserved.</div>
+        <p className="font-mono font-bold text-sm tracking-wider border-t-2 border-paper/20 pt-5 mb-8">
+          <span className="text-acid">member@codeoholics:~$</span> ./join — pick a lane, build with us
+          <span aria-hidden="true" className="inline-block w-3 h-[1.1em] bg-acid ml-1 align-middle animate-blink" />
+        </p>
+
+        <div className="flex flex-col sm:flex-row justify-between gap-4 items-baseline sm:items-center font-mono font-bold text-[11px] tracking-[0.13em] uppercase text-paper/45 border-t-2 border-paper/20 pt-4">
+          <span>© {new Date().getFullYear()} CodeOholics</span>
+          <span className="hidden sm:inline">Built by the community</span>
+          <button
+            onClick={top}
+            className="text-acid hover:underline cursor-pointer"
+          >
+            ↑ Back to top
+          </button>
         </div>
       </div>
     </footer>

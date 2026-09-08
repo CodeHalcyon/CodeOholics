@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import getOpportunities from "../Helper/getOpportunities";
 
@@ -32,23 +33,19 @@ const Opportunities = () => {
   );
 
   return (
-    <div className="bg-white min-h-screen pt-32 pb-20 px-4 sm:px-6">
-      <div className="container mx-auto max-w-5xl">
-        <motion.div
-          className="text-center mb-14"
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">Apply Now</span>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-3">Opportunities</h1>
-          <p className="text-gray-500 text-sm max-w-md mx-auto">Current openings and recruitment drives.</p>
-        </motion.div>
+    <div className="bg-paper min-h-screen pt-32 pb-20 px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="sec-head">
+          <h1 className="font-display text-4xl sm:text-6xl uppercase">Opportunities</h1>
+          <span className="label-mono hidden sm:block text-ink/60">APPLY NOW / HIRING</span>
+        </div>
+        <p className="mb-8 font-medium text-ink/70 -mt-3">
+          Current openings and recruitment drives.
+        </p>
 
         <div className="flex justify-center mb-10">
           <div className="relative w-full max-w-xs">
-            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/50 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
@@ -56,7 +53,8 @@ const Opportunities = () => {
               placeholder="Search opportunities..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full py-2.5 pl-10 pr-4 bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 rounded-full text-sm focus:outline-none focus:border-gray-400 transition-all duration-300"
+              className="input-hard input-search label-mono !text-xs"
+              aria-label="Search opportunities"
             />
           </div>
         </div>
@@ -66,7 +64,7 @@ const Opportunities = () => {
             filteredOpportunities.map((opp) => (
               <motion.div
                 key={opp.id}
-                className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow"
+                className="flip-row border-[3px] border-ink bg-paper p-5 sm:p-6 hover:shadow-[8px_8px_0_0_var(--color-zing)] transition-shadow"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -74,67 +72,80 @@ const Opportunities = () => {
               >
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
-                        opp.status
-                          ? "bg-gray-900 text-white border-gray-900"
-                          : "bg-gray-100 text-gray-500 border-gray-200"
-                      }`}>
-                        {opp.status ? "Live" : "Closed"}
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
+                      <span
+                        className={`chip !shadow-none !border-ink ${
+                          opp.status ? "!bg-acid" : "!bg-paper text-ink/50"
+                        }`}
+                      >
+                        {opp.status ? "▲ Live" : "■ Closed"}
                       </span>
-                      <h2 className="text-lg font-semibold text-gray-900 truncate">{opp.title}</h2>
+                      <h2 className="font-display text-xl sm:text-2xl uppercase truncate">
+                        {opp.title}
+                      </h2>
                     </div>
-                    <p className="text-sm text-gray-500 whitespace-pre-line line-clamp-2">{opp.description}</p>
-                    <div className="flex flex-wrap gap-4 mt-3 text-xs text-gray-400">
-                      <span><strong className="text-gray-600">Date:</strong> {opp.date}</span>
-                      <span><strong className="text-gray-600">Location:</strong> {opp.location}</span>
+                    <p className="font-medium text-sm text-ink/70 whitespace-pre-line line-clamp-2">
+                      {opp.description}
+                    </p>
+                    <div className="flex flex-wrap gap-4 mt-3 label-mono text-[10px] text-ink/60">
+                      <span><span className="text-punk">DATE</span> · {opp.date}</span>
+                      <span><span className="text-punk">WHERE</span> · {opp.location}</span>
                     </div>
                   </div>
                   <div className="shrink-0">
                     {opp.status ? (
-                      <button
-                        onClick={() => openModal(opp)}
-                        className="w-full sm:w-auto px-5 py-2 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-all duration-300"
-                      >
-                        View Details
+                      <button onClick={() => openModal(opp)} className="btn btn-solid !py-2.5 !px-5 !text-xs">
+                        View details
                       </button>
                     ) : (
-                      <span className="inline-block px-5 py-2 bg-gray-100 text-gray-400 text-sm font-medium rounded-full cursor-not-allowed">
-                        Closed
-                      </span>
+                      <span className="chip !shadow-none cursor-not-allowed text-ink/40">Closed</span>
                     )}
                   </div>
                 </div>
               </motion.div>
             ))
           ) : (
-            <div className="text-center py-16">
-              <p className="text-gray-500">No opportunities found.</p>
-              <p className="text-gray-400 text-sm mt-1">Try a different search term.</p>
+            <div className="text-center py-16 border-[3px] border-dashed border-ink/40">
+              <p className="font-display text-3xl uppercase text-ink/40">Empty</p>
+              <p className="font-mono font-bold text-sm text-ink/60 mt-2">
+                No opportunities found. Try a different search term.
+              </p>
             </div>
           )}
         </div>
       </div>
 
       {isModalOpen && selectedOpportunity && createPortal(
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl p-8 max-w-lg w-full relative shadow-xl">
-            <button className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-lg" onClick={closeModal}>&times;</button>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">{selectedOpportunity.title}</h2>
-            <p className="text-sm text-gray-600 whitespace-pre-line mb-6">{selectedOpportunity.description}</p>
-            <div className="space-y-1 text-sm text-gray-500 mb-6">
-              <p><strong className="text-gray-700">Date:</strong> {selectedOpportunity.date}</p>
-              <p><strong className="text-gray-700">Location:</strong> {selectedOpportunity.location}</p>
-            </div>
-            <a
-              href={selectedOpportunity.applyLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-2.5 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-all duration-300"
+        <div className="fixed inset-0 bg-ink/70 flex items-center justify-center z-[150] p-4" role="dialog" aria-modal="true">
+          <div className="relative w-full max-w-lg bg-paper border-[3px] border-ink shadow-[12px_12px_0_0_var(--color-zing)] p-7 sm:p-8">
+            <button
+              onClick={closeModal}
+              aria-label="Close"
+              className="absolute top-3 right-3 h-10 w-10 grid place-items-center border-[3px] border-ink bg-paper text-xl font-bold hover:bg-punk hover:text-paper transition-colors"
             >
-              Apply Now
-              <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </a>
+              ×
+            </button>
+            <span className="chip !bg-zing !shadow-none">DETAILS</span>
+            <h2 className="font-display text-2xl sm:text-3xl uppercase leading-none mt-4">
+              {selectedOpportunity.title}
+            </h2>
+            <p className="mt-4 font-medium text-sm text-ink/75 whitespace-pre-line">
+              {selectedOpportunity.description}
+            </p>
+            <div className="mt-5 space-y-1 label-mono text-[11px] text-ink/70">
+              <p><span className="text-punk">DATE</span> · {selectedOpportunity.date}</p>
+              <p><span className="text-punk">WHERE</span> · {selectedOpportunity.location}</p>
+            </div>
+            <div className="mt-6 flex justify-end">
+              <a
+                href={selectedOpportunity.applyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-solid"
+              >
+                Apply now →
+              </a>
+            </div>
           </div>
         </div>,
         document.body

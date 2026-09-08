@@ -1,25 +1,58 @@
 import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 import {
   FaLinkedin, FaInstagram, FaGithub,
-  FaCode, FaUsers, FaLightbulb, FaRocket
+  FaUsers, FaLightbulb, FaCode, FaRocket,
 } from "react-icons/fa";
 import getCoreTeam from "../Helper/coreTeam";
 import defaultCoreTeam from "../data/coreTeam.json";
 
-gsap.registerPlugin(ScrollTrigger);
+const founding = [
+  {
+    name: "Charan Narukulla",
+    role: "Founder",
+    ser: "MEM-001",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/charan-HdgiqB9KCsda7dJI0ubMCxWDyzqhrf.jpeg",
+    linkedin: "https://www.linkedin.com/in/charan-narukulla/",
+    instagram: "https://www.instagram.com/charan_chowdary_n/",
+  },
+  {
+    name: "Abhilash Movva",
+    role: "Co-founder",
+    ser: "MEM-002",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/abhilash-eQVpTbFeKpIK7eDCNkfw3KIckWty56.jpeg",
+    linkedin: "https://www.linkedin.com/in/abhilashmovva/",
+    instagram: "https://www.instagram.com/abhilashmovva/",
+  },
+  {
+    name: "Sourabh Mahindrakar",
+    role: "Co-founder",
+    ser: "MEM-003",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/sourabh-qiJEAsORlSMW8QIILVnzwdpjBnp5S7.jpeg",
+    linkedin: "https://www.linkedin.com/in/sourabh-mahindrakar-7459541b0/",
+    instagram: "https://www.instagram.com/itzz_sooo_rabh/",
+  },
+  {
+    name: "Manav Patel",
+    role: "Co-founder",
+    ser: "MEM-004",
+    src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/manav-mUocAEV2mKT1hGhbWaJYX44gNoHUWu.jpeg",
+    linkedin: "http://linkedin.com/in/manav-patel-3964b41ba/",
+    instagram: "https://www.instagram.com/m.n.v_patel/",
+  },
+];
+
+const values = [
+  { icon: <FaUsers className="w-6 h-6" />, title: "Passionate Minds", desc: "A collective of coders, designers, and tech enthusiasts shaping the future of technology." },
+  { icon: <FaLightbulb className="w-6 h-6" />, title: "Innovation-Driven", desc: "From AI to Blockchain, we explore and experiment with cutting-edge technologies." },
+  { icon: <FaCode className="w-6 h-6" />, title: "Community First", desc: "We grow together, sharing knowledge, ideas, and opportunities at every step." },
+  { icon: <FaRocket className="w-6 h-6" />, title: "Real-World Impact", desc: "Bridging academia and industry to solve meaningful challenges that matter." },
+];
 
 const About = () => {
-  const sectionRef = useRef(null);
-  const heroTitleRef = useRef(null);
-  const heroSubRef = useRef(null);
-  const storyRef = useRef(null);
-  const statsRef = useRef(null);
-  const foundingRef = useRef(null);
-  const currentRef = useRef(null);
-
   const [team, setTeam] = useState(defaultCoreTeam);
+  const statsRef = useRef(null);
 
   useEffect(() => {
     getCoreTeam().then((rows) => {
@@ -27,345 +60,434 @@ const About = () => {
     });
   }, []);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        heroTitleRef.current,
-        { y: 120, opacity: 0, rotateX: 15 },
-        { y: 0, opacity: 1, rotateX: 0, duration: 1, ease: "power3.out",
-          scrollTrigger: { trigger: heroTitleRef.current, start: "top 85%", toggleActions: "play none none reverse" },
-        }
-      );
-      gsap.fromTo(
-        heroSubRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, delay: 0.2, ease: "power2.out",
-          scrollTrigger: { trigger: heroSubRef.current, start: "top 85%", toggleActions: "play none none reverse" },
-        }
-      );
-      gsap.fromTo(
-        ".about-img",
-        { y: 60, opacity: 0, scale: 0.95 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.8, stagger: 0.15, ease: "power2.out",
-          scrollTrigger: { trigger: ".about-imgs", start: "top 80%", toggleActions: "play none none reverse" },
-        }
-      );
-      gsap.fromTo(
-        storyRef.current,
-        { x: 60, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8, ease: "power2.out",
-          scrollTrigger: { trigger: storyRef.current, start: "top 80%", toggleActions: "play none none reverse" },
-        }
-      );
-      gsap.fromTo(
-        ".stat-item",
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, stagger: 0.12, ease: "power2.out",
-          scrollTrigger: { trigger: statsRef.current, start: "top 80%", toggleActions: "play none none reverse" },
-        }
-      );
-
-      gsap.fromTo(
-        ".founding-card",
-        { y: 60, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: "power2.out",
-          scrollTrigger: { trigger: foundingRef.current, start: "top 80%", toggleActions: "play none none reverse" },
-        }
-      );
-      // Git branch: main line draw
-      document.querySelectorAll(".branch-main").forEach(line => {
-        const len = line.getTotalLength();
-        line.style.strokeDasharray = len;
-        gsap.fromTo(line, { strokeDashoffset: len }, {
-          strokeDashoffset: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: currentRef.current,
-            start: "top 30%",
-            end: "bottom 60%",
-            scrub: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-      });
-
-      // Git branch: member cards reveal
-      gsap.utils.toArray(".member-card").forEach((card, i) => {
-        gsap.fromTo(card,
-          { opacity: 0, x: 24 },
-          { opacity: 1, x: 0, duration: 0.5, ease: "power2.out",
-            scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" },
-          }
-        );
-      });
-
-      // Git branch: dots pop in
-      gsap.utils.toArray(".member-dot").forEach((dot) => {
-        gsap.fromTo(dot,
-          { scale: 0, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.5)",
-            scrollTrigger: { trigger: dot, start: "top 85%", toggleActions: "play none none reverse" },
-          }
-        );
-      });
-
-      // Git branch: connector lines grow
-      gsap.utils.toArray(".member-connector").forEach((conn) => {
-        const origin = conn.classList.contains("conn-left") ? "left center" : "right center";
-        gsap.fromTo(conn,
-          { scaleX: 0 },
-          { scaleX: 1, duration: 0.4, ease: "power2.inOut",
-            transformOrigin: origin,
-            scrollTrigger: { trigger: conn, start: "top 85%", toggleActions: "play none none reverse" },
-          }
-        );
-      });
-      // Footer words stagger
-      gsap.fromTo(".footer-word",
-        { y: 40, opacity: 0, rotateX: 15 },
-        { y: 0, opacity: 1, rotateX: 0, duration: 0.6, stagger: 0.06, ease: "power3.out",
-          scrollTrigger: { trigger: ".footer-words", start: "top 85%", toggleActions: "play none none reverse" },
-        }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
-  const scrollPanels = [
-    { icon: <FaUsers className="w-8 h-8" />, title: "Passionate Minds", desc: "A collective of coders, designers, and tech enthusiasts shaping the future of technology." },
-    { icon: <FaLightbulb className="w-8 h-8" />, title: "Innovation-Driven", desc: "From AI to Blockchain, we explore and experiment with cutting-edge technologies." },
-    { icon: <FaCode className="w-8 h-8" />, title: "Community First", desc: "We grow together, sharing knowledge, ideas, and opportunities at every step." },
-    { icon: <FaRocket className="w-8 h-8" />, title: "Real-World Impact", desc: "Bridging academia and industry to solve meaningful challenges that matter." },
+  const stats = [
+    { num: "2022", label: "Founded", tone: "bg-ink text-paper" },
+    { num: "1000+", label: "Members", tone: "bg-zing text-ink" },
+    { num: "20+", label: "Events", tone: "bg-punk text-paper" },
+    { num: "∞", label: "Possibilities", tone: "bg-volt text-paper" },
   ];
 
   return (
-    <div ref={sectionRef} className="bg-white">
+    <div className="bg-paper">
       {/* ─── HERO ─── */}
-      <section className="min-h-screen flex items-center px-6 md:px-16 pt-28 pb-20">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <div className="w-full lg:w-[55%]">
-              <span className="font-body text-xs font-medium text-gray-400 uppercase tracking-[0.2em]">About Us</span>
-              <h1 ref={heroTitleRef} className="font-display text-8xl md:text-[10rem] lg:text-[12rem] leading-[0.8] text-gray-900 mt-4">
-                Code<br /><span className="text-gray-200">Oholics</span>
-              </h1>
-              <p ref={heroSubRef} className="font-body text-base md:text-lg text-gray-500 max-w-lg mt-6 leading-relaxed">
-                A community of builders, thinkers, and dreamers — where code meets creativity and every line tells a story.
-              </p>
+      <section className="relative border-b-4 border-ink overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 gridpaper opacity-[0.06] pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-16 grid lg:grid-cols-[1fr_1fr] gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="label-mono flex items-center gap-3 mb-5">
+              <span className="inline-block w-12 h-1 bg-punk" aria-hidden="true" />
+              About us
+            </p>
+            <h1 className="font-display text-[clamp(4rem,12vw,11rem)] leading-[0.82] uppercase">
+              Code
+              <br />
+              <span className="outline-word">Oholics</span>
+            </h1>
+            <p className="mt-6 max-w-lg text-lg font-medium text-ink/75">
+              A community of builders, thinkers, and dreamers — where code meets
+              creativity and every line tells a story.
+            </p>
+            <div className="flex items-center gap-3 mt-8">
+              <span className="stamp !rotate-[-4deg]">EST 2022</span>
+              <span className="chip !bg-zing">1K+ Members</span>
             </div>
-            <div className="w-full lg:w-[45%] about-imgs grid grid-cols-2 gap-3 md:gap-4">
-              <div className="about-img overflow-hidden rounded-2xl">
-                <img src="/code1.jpg" className="h-48 md:h-72 w-full object-cover" alt="" />
-              </div>
-              <div className="about-img overflow-hidden rounded-2xl mt-8">
-                <img src="/code2.jpg" className="h-48 md:h-72 w-full object-cover" alt="" />
-              </div>
-              <div className="about-img overflow-hidden rounded-2xl -mt-8">
-                <img src="/code3.png" className="h-48 md:h-72 w-full object-cover" alt="" />
-              </div>
-              <div className="about-img overflow-hidden rounded-2xl">
-                <img src="/code4.jpg" className="h-48 md:h-72 w-full object-cover" alt="" />
-              </div>
-            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-2 gap-4">
+            {["/code1.jpg", "/code2.jpg", "/code3.png", "/code4.jpg"].map((src, i) => (
+              <motion.div
+                key={src}
+                className={`border-[3px] border-ink bg-paper p-2 shadow-[8px_8px_0_0_var(--color-ink)] ${i === 1 ? "translate-y-6" : ""} ${i === 2 ? "-translate-y-6" : ""} transition-transform duration-200 hover:-translate-x-1 hover:-translate-y-1`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.15 + i * 0.08 }}
+              >
+                <img src={src} alt="" className="w-full h-44 sm:h-64 object-cover border-2 border-ink" loading="lazy" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── STATS ─── */}
-      <section ref={statsRef} className="py-20 px-6 md:px-16 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
-          {[
-            { num: "2022", label: "Founded" },
-            { num: "1000+", label: "Members" },
-            { num: "20+", label: "Events" },
-            { num: "∞", label: "Possibilities" },
-          ].map((s, i) => (
-            <div key={i} className="stat-item text-center">
-              <div className="font-display text-5xl md:text-7xl text-gray-900">{s.num}</div>
-              <div className="font-body text-xs text-gray-400 uppercase tracking-widest mt-2">{s.label}</div>
-            </div>
+      <section ref={statsRef} className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div className="sec-head">
+          <h2 className="font-display text-4xl sm:text-5xl uppercase">The receipts</h2>
+          <span className="label-mono hidden sm:block text-ink/60">PROOF OF WORK</span>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              className={`border-[3px] border-ink shadow-[8px_8px_0_0_var(--color-ink)] p-8 flex flex-col items-center justify-center gap-1 text-center aspect-[4/4.5] ${s.tone}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: i * 0.07 }}
+            >
+              <div className="font-display text-6xl sm:text-7xl leading-none">{s.num}</div>
+              <div className="label-mono text-[10px] opacity-90">{s.label}</div>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* ─── STORY ─── */}
-      <section className="py-20 md:py-32 px-6 md:px-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 md:gap-24 items-start">
-          <div className="w-full md:w-[45%] about-imgs flex flex-col sm:flex-row gap-3">
-            <div className="about-img overflow-hidden rounded-2xl flex-1">
-              <img src="/kick.jpeg" className="h-56 md:h-72 w-full object-cover" alt="" />
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-20 grid md:grid-cols-2 gap-12 items-start">
+        <div className="flex gap-4">
+          {["/kick.jpeg", "/join.jpg"].map((src, i) => (
+            <div key={src} className={`flex-1 border-[3px] border-ink bg-paper p-2 shadow-[8px_8px_0_0_var(--color-ink)] ${i ? "translate-y-6" : ""}`}>
+              <img src={src} alt="CodeOholics story moments" className="w-full h-56 sm:h-72 object-cover border-2 border-ink" loading="lazy" />
             </div>
-            <div className="about-img overflow-hidden rounded-2xl flex-1 mt-4 sm:mt-8">
-              <img src="/join.jpg" className="h-56 md:h-72 w-full object-cover" alt="" />
-            </div>
-          </div>
-          <div ref={storyRef} className="w-full md:w-[55%]">
-            <span className="font-body text-xs font-medium text-gray-400 uppercase tracking-[0.2em]">Our Story</span>
-            <h2 className="font-display text-5xl md:text-7xl text-gray-900 mt-3 leading-[0.9]">
-              A Glimpse Into<br /><span className="text-gray-300">Codeoholics</span>
-            </h2>
-            <p className="font-body text-base text-gray-600 leading-relaxed mt-6 max-w-xl">
-              Behind every line of code, every brainstorming session, and every challenge conquered lies a thriving community of innovators. Codeoholics isn't just about coding; it's about collaboration, creativity, and pushing boundaries.
-            </p>
-            <div className="mt-10 grid grid-cols-2 gap-4 max-w-lg">
-              {[
-                { icon: <FaUsers className="w-4 h-4" />, title: "Passionate Minds" },
-                { icon: <FaLightbulb className="w-4 h-4" />, title: "Innovation-Driven" },
-                { icon: <FaCode className="w-4 h-4" />, title: "Community First" },
-                { icon: <FaRocket className="w-4 h-4" />, title: "Real-World Impact" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 bg-white border border-gray-200 rounded-full px-4 py-2.5 shadow-sm">
-                  <span className="text-gray-700">{item.icon}</span>
-                  <span className="font-body text-xs font-medium text-gray-900">{item.title}</span>
-                </div>
-              ))}
-            </div>
+          ))}
+        </div>
+        <div>
+          <p className="label-mono flex items-center gap-3 mb-4">
+            <span className="inline-block w-12 h-1 bg-punk" aria-hidden="true" />
+            Our story
+          </p>
+          <h2 className="font-display text-4xl sm:text-6xl uppercase leading-none">
+            A glimpse into<br /><span className="text-punk underline decoration-ink decoration-4 underline-offset-8">Codeoholics</span>
+          </h2>
+          <p className="mt-6 text-lg font-medium text-ink/80 leading-relaxed max-w-xl">
+            Behind every line of code, every brainstorming session, and every challenge
+            conquered lies a thriving community of innovators. Codeoholics isn't just
+            about coding; it's about collaboration, creativity, and pushing boundaries.
+          </p>
+          <div className="mt-8 grid grid-cols-2 gap-3 max-w-lg">
+            {values.slice(0, 4).map((v) => (
+              <div key={v.title} className="chip justify-start !bg-paper gap-2.5 !py-3">
+                {v.icon}
+                {v.title}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ─── HORIZONTAL SCROLL: WHAT DEFINES US ─── */}
-      <section className="bg-white">
-        <div className="py-20 px-6 md:px-16 text-center relative z-10 bg-white">
-          <span className="font-body text-xs font-medium text-gray-400 uppercase tracking-[0.2em]">Values</span>
-          <h2 className="font-display text-5xl md:text-7xl text-gray-900 mt-3">What Defines Us</h2>
-        </div>
-        <div className="px-6 md:px-16 pb-20">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {scrollPanels.map((panel, i) => (
-              <div key={i} className="bg-white border border-gray-200 rounded-2xl p-8 text-center hover:shadow-md transition-shadow">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-100 mb-6">
-                  <span className="text-gray-800">{panel.icon}</span>
-                </div>
-                <h3 className="font-display text-3xl text-gray-900 leading-[0.9] mb-3">{panel.title}</h3>
-                <p className="font-body text-sm text-gray-500 leading-relaxed">{panel.desc}</p>
-              </div>
+      {/* ─── VALUES ─── */}
+      <section className="border-t-4 border-ink py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="sec-head">
+            <h2 className="font-display text-4xl sm:text-5xl uppercase">What defines us</h2>
+            <span className="label-mono hidden sm:block text-ink/60">SEC.04 / VALUES</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((v, i) => (
+              <motion.div
+                key={v.title}
+                className={`hard-card p-6 flex flex-col gap-4 ${i % 2 ? "bg-zing" : "bg-paper"}`}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+              >
+                <span className="label-mono">0{i + 1}</span>
+                <span className="grid place-items-center h-12 w-12 border-2 border-ink bg-paper text-ink">
+                  {v.icon}
+                </span>
+                <h3 className="font-display text-2xl uppercase leading-none">{v.title}</h3>
+                <p className="font-medium text-sm opacity-90">{v.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ─── FOUNDING TEAM ─── */}
-      <section ref={foundingRef} className="py-20 md:py-32 px-6 md:px-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="font-body text-xs font-medium text-gray-400 uppercase tracking-[0.2em]">Team</span>
-            <h2 className="font-display text-5xl md:text-7xl text-gray-900 mt-3">Founding Team</h2>
+      <section className="border-t-4 border-ink py-16 bg-paper">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="sec-head">
+            <h2 className="font-display text-4xl sm:text-5xl uppercase">The ops</h2>
+            <span className="label-mono hidden sm:block text-ink/60">FOUNDERS / MEM 001-004</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: "Charan Narukulla", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/charan-HdgiqB9KCsda7dJI0ubMCxWDyzqhrf.jpeg", linkedin: "https://www.linkedin.com/in/charan-narukulla/", instagram: "https://www.instagram.com/charan_chowdary_n/" },
-              { name: "Abhilash Movva", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/abhilash-eQVpTbFeKpIK7eDCNkfw3KIckWty56.jpeg", linkedin: "https://www.linkedin.com/in/abhilashmovva/", instagram: "https://www.instagram.com/abhilashmovva/" },
-              { name: "Sourabh Mahindrakar", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/sourabh-qiJEAsORlSMW8QIILVnzwdpjBnp5S7.jpeg", linkedin: "https://www.linkedin.com/in/sourabh-mahindrakar-7459541b0/", instagram: "https://www.instagram.com/itzz_sooo_rabh/" },
-              { name: "Manav Patel", src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/manav-mUocAEV2mKT1hGhbWaJYX44gNoHUWu.jpeg", linkedin: "http://linkedin.com/in/manav-patel-3964b41ba/", instagram: "https://www.instagram.com/m.n.v_patel/" },
-            ].map((m, i) => (
-              <div key={i} className="founding-card group relative overflow-hidden rounded-2xl bg-white border border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img src={m.src} alt={m.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            {founding.map((m, i) => (
+              <motion.article
+                key={m.name}
+                className="flip-card border-[3px] border-ink bg-paper shadow-[9px_9px_0_0_var(--color-ink)] transition-transform duration-150 hover:-translate-x-1 hover:-translate-y-1"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+              >
+                <div className="border-b-[3px] border-ink overflow-hidden bg-acid">
+                  <img src={m.src} alt={m.name} className="flip-img w-full aspect-square object-cover" loading="lazy" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-white font-semibold text-sm md:text-base">{m.name}</h3>
-                  <div className="flex gap-3 mt-2">
-                    {m.linkedin && <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors"><FaLinkedin size={14} /></a>}
-                    {m.instagram && <a href={m.instagram} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors"><FaInstagram size={14} /></a>}
+                <div className="p-4">
+                  <h3 className="font-display text-2xl uppercase leading-none">{m.name}</h3>
+                  <p className="label-mono text-ink/60 mt-1.5 mb-3">
+                    <span aria-hidden="true" className="inline-block w-2.5 h-2.5 bg-acid border-2 border-ink mr-1.5 align-middle" />
+                    {m.role}
+                  </p>
+                  <div className="flex items-center justify-between border-t-2 border-ink pt-2.5">
+                    <span className="font-mono font-bold text-[11px] tracking-widest">{m.ser}</span>
+                    <div className="flex gap-2.5">
+                      {m.linkedin && (
+                        <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} on LinkedIn`} className="font-mono font-bold text-[11px] border-b-2 border-ink hover:bg-ink hover:text-paper transition-colors">
+                          <FaLinkedin size={13} />
+                        </a>
+                      )}
+                      {m.instagram && (
+                        <a href={m.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} on Instagram`} className="font-mono font-bold text-[11px] border-b-2 border-ink hover:bg-ink hover:text-paper transition-colors">
+                          <FaInstagram size={13} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── CURRENT TEAM: GIT BRANCH ─── */}
-      <section ref={currentRef} className="py-20 md:py-32 px-6 md:px-16 overflow-hidden">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="font-body text-xs font-medium text-gray-400 uppercase tracking-[0.2em]">Leadership</span>
-            <h2 className="font-display text-5xl md:text-7xl text-gray-900 mt-3">Current Team</h2>
+      {/* ─── CURRENT TEAM: GROWING GIT TREE ─── */}
+      <section className="border-t-4 border-ink py-16 overflow-hidden bg-paper">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="sec-head">
+            <h2 className="font-display text-4xl sm:text-5xl uppercase">
+              Current team
+            </h2>
+            <span className="label-mono hidden sm:block text-ink/60">
+              LEADERSHIP / GIT BRANCH
+            </span>
           </div>
 
           <div className="relative">
-            {/* Mobile branch line */}
-            <svg
-              className="md:hidden absolute left-[1.65rem] top-0 h-full w-0.5 overflow-visible pointer-events-none"
-              style={{ willChange: 'stroke-dashoffset' }}
-            >
-              <line className="branch-main text-gray-300" x1="0" y1="0" x2="0" y2="100%" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
+            {/* Growing trunk */}
+            <motion.div
+              aria-hidden="true"
+              className="
+          absolute
+          left-[1.65rem]
+          md:left-1/2
+          md:-translate-x-1/2
+          top-0
+          bottom-0
+          w-[3px]
+          bg-ink
+          origin-top
+          z-0
+        "
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{
+                duration: Math.max(team.length * 0.45, 1.8),
+                ease: "easeInOut",
+              }}
+            />
 
-            {/* Desktop branch line */}
-            <svg
-              className="hidden md:block absolute left-1/2 -translate-x-px top-0 h-full w-0.5 overflow-visible pointer-events-none"
-              style={{ willChange: 'stroke-dashoffset' }}
-            >
-              <line className="branch-main text-gray-300" x1="0" y1="0" x2="0" y2="100%" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
+            {team.map((m, i) => {
+              const isLeft = i % 2 === 0;
 
-            {team.map((m, i) => (
-              <React.Fragment key={i}>
-                {/* Mobile row */}
-                <div className="md:hidden relative flex items-start py-7 pl-14">
-                  <div className="member-dot absolute left-[1.15rem] top-5 w-3.5 h-3.5 rounded-full border-2 border-gray-900 bg-white z-10" />
-                  <div className="member-connector conn-left absolute left-8 top-[1.35rem] h-px bg-gray-300 w-6" />
-                  <div className="member-card ml-4 flex-1 bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="flex gap-3 items-start">
-                      <img src={m.src} alt={m.name} className="w-11 h-11 rounded-full object-cover shrink-0 ring-2 ring-gray-100" />
-                      <div className="min-w-0">
-                        <h3 className="font-body text-sm font-semibold text-gray-900">{m.name}</h3>
-                        <span className="text-[10px] font-mono text-gray-400">{m.role}</span>
-                        {m.desc && <p className="text-xs text-gray-400 mt-1 leading-relaxed">{m.desc}</p>}
-                        <div className="flex gap-2.5 mt-1.5">
-                          {m.linkedin && <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-700 transition-colors"><FaLinkedin size={13} /></a>}
-                          {m.github && <a href={m.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-700 transition-colors"><FaGithub size={13} /></a>}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              return (
+                <motion.div
+                  key={m.name || i}
+                  className="relative py-6 md:py-8"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, amount: 0.35 }}
+                  transition={{
+                    delay: i * 0.35,
+                    duration: 0.3,
+                  }}
+                >
+                  {/* Git commit node */}
+                  <motion.span
+                    aria-hidden="true"
+                    className="
+                absolute
+                left-[1.05rem]
+                md:left-1/2
+                md:-translate-x-1/2
+                top-7
+                w-4
+                h-4
+                border-[3px]
+                border-ink
+                bg-zing
+                z-10
+              "
+                    initial={{ scale: 0, rotate: 45 }}
+                    whileInView={{ scale: 1, rotate: 45 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    transition={{
+                      delay: i * 0.35 + 0.15,
+                      duration: 0.25,
+                      type: "spring",
+                      stiffness: 300,
+                    }}
+                  />
 
-                {/* Desktop row */}
-                <div className="hidden md:flex relative items-start py-10">
-                  <div className={`w-[calc(50%-2rem)] ${i % 2 === 0 ? 'mr-auto' : 'ml-auto'}`}>
-                    <div className="member-card relative bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
-                      <div className={`member-connector absolute top-[1.15rem] h-px bg-gray-300 w-8 ${
-                        i % 2 === 0 ? 'conn-left right-0 translate-x-full' : 'conn-right left-0 -translate-x-full'
-                      }`} />
+                  {/* Growing branch */}
+                  <motion.div
+                    aria-hidden="true"
+                    className={`
+                hidden md:block
+                absolute
+                top-[35px]
+                h-[3px]
+                bg-ink
+                z-0
+                ${isLeft
+                        ? "right-1/2 mr-0 origin-right"
+                        : "left-1/2 ml-0 origin-left"}
+              `}
+                    style={{
+                      width: "calc(50% - 2rem)",
+                    }}
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    transition={{
+                      delay: i * 0.35 + 0.25,
+                      duration: 0.45,
+                      ease: "easeOut",
+                    }}
+                  />
+
+                  {/* Team card */}
+                  <motion.div
+                    className={`
+                relative
+                md:w-[calc(50%-2rem)]
+                pl-12
+                md:pl-0
+                ${isLeft
+                        ? "md:mr-auto"
+                        : "md:ml-auto"}
+              `}
+                    initial={{
+                      opacity: 0,
+                      x: isLeft ? -35 : 35,
+                      y: 10,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.35,
+                    }}
+                    transition={{
+                      delay: i * 0.35 + 0.45,
+                      duration: 0.45,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <div className="
+                flip-row
+                border-[3px]
+                border-ink
+                bg-paper
+                p-4
+                shadow-[6px_6px_0_0_var(--color-ink)]
+                transition-transform
+                duration-150
+                hover:-translate-x-1
+                hover:-translate-y-1
+              ">
                       <div className="flex gap-3 items-start">
-                        <img src={m.src} alt={m.name} className="w-14 h-14 rounded-full object-cover shrink-0 ring-2 ring-gray-100" />
+                        <img
+                          src={m.src}
+                          alt={m.name}
+                          className="
+                      w-12
+                      h-12
+                      object-cover
+                      border-2
+                      border-ink
+                      shrink-0
+                    "
+                          loading="lazy"
+                        />
+
                         <div className="min-w-0">
-                          <h3 className="font-body text-sm font-semibold text-gray-900">{m.name}</h3>
-                          <span className="text-xs font-mono text-gray-500 font-medium">{m.role}</span>
-                          {m.desc && <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">{m.desc}</p>}
+                          <h3 className="font-display text-lg uppercase leading-none">
+                            {m.name}
+                          </h3>
+
+                          <span className="
+                      font-mono
+                      text-[10px]
+                      font-bold
+                      tracking-widest
+                      text-ink/60
+                      uppercase
+                    ">
+                            {m.role}
+                          </span>
+
+                          {m.desc && (
+                            <p className="
+                        text-sm
+                        font-medium
+                        text-ink/70
+                        mt-1
+                        leading-snug
+                      ">
+                              {m.desc}
+                            </p>
+                          )}
+
                           <div className="flex gap-2.5 mt-2">
-                            {m.linkedin && <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-700 transition-colors"><FaLinkedin size={14} /></a>}
-                            {m.github && <a href={m.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-700 transition-colors"><FaGithub size={14} /></a>}
+                            {m.linkedin && (
+                              <a
+                                href={m.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${m.name} on LinkedIn`}
+                                className="
+                            text-ink/60
+                            hover:text-ink
+                            transition-colors
+                          "
+                              >
+                                <FaLinkedin size={13} />
+                              </a>
+                            )}
+
+                            {m.github && (
+                              <a
+                                href={m.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${m.name} on GitHub`}
+                                className="
+                            text-ink/60
+                            hover:text-ink
+                            transition-colors
+                          "
+                              >
+                                <FaGithub size={13} />
+                              </a>
+                            )}
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="member-dot absolute left-1/2 -translate-x-1/2 top-[1.15rem] z-10">
-                    <div className="w-4 h-4 rounded-full border-2 border-gray-900 bg-white" />
-                  </div>
-                </div>
-              </React.Fragment>
-            ))}
+                  </motion.div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
-
       {/* ─── FOOTER NOTE ─── */}
-      <section className="py-20 px-6 md:px-16 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="footer-words font-display text-4xl md:text-6xl leading-[0.9] flex flex-wrap justify-center gap-x-4 gap-y-2">
+      <section className="border-t-4 border-ink py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="font-display text-3xl sm:text-5xl md:text-6xl uppercase leading-[0.95] flex flex-wrap justify-center gap-x-5 gap-y-2">
             {"Built with love by the CodeOholics community".split(" ").map((word, i) => (
-              <span
-                key={i}
-                className="footer-word inline-block text-gray-200 cursor-default transition-colors duration-300 hover:text-gray-900"
-                style={{ willChange: 'transform, opacity' }}
-              >
-                {word === "love" ? "❤️" : word}
+              <span key={i} className={`inline-block transition-colors duration-300 ${i % 3 === 0 ? "outline-word hover:[-webkit-text-stroke-color:var(--color-punk)]" : "text-ink/25 hover:text-ink"}`}>
+                {word === "love" ? "♥" : word}
               </span>
             ))}
           </p>

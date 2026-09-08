@@ -1,140 +1,140 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Card from "./Card";
+import React from "react";
+import { Link } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
+const chips = ["WEB", "MOBILE", "AI & ML", "BLOCKCHAIN", "CLOUD", "DESIGN"];
 
 const Hero = () => {
-  const sectionRef = useRef(null);
-  const headingContainerRef = useRef(null);
-  const descRef = useRef(null);
-  const cardsRef = useRef([]);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        headingContainerRef.current,
-        { width: "0%" },
-        {
-          width: "100%",
-          duration: 1.2,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "top 40%",
-            scrub: 0.5,
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        descRef.current,
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: descRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        cardsRef.current,
-        { y: 50, opacity: 0, scale: 0.95 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: cardsRef.current[0],
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const heading = "Empowering Coders Through Hands-On Experiences";
-
   return (
-    <div ref={sectionRef} className="flex flex-col gap-12 py-24 px-5 md:px-10 bg-gray-50 items-center overflow-x-hidden">
-      <div className="text-center max-w-3xl">
-        <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">
-          About Us
-        </span>
-        <div className="flex justify-center">
-          <div
-            ref={headingContainerRef}
-            className="overflow-hidden"
-            style={{ width: "0%" }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4 leading-tight whitespace-nowrap md:whitespace-normal">
-              {heading}
-            </h2>
-          </div>
-        </div>
-        <p
-          ref={descRef}
-          className="mt-4 text-gray-600 text-lg"
-        >
-          At CodeOholics, we believe in learning by doing. Our community thrives
-          on interactive workshops, intensive bootcamps, and exhilarating
-          hackathons that foster collaboration and innovation.
-        </p>
-      </div>
+    <section className="relative border-b-4 border-ink overflow-hidden">
+      {/* Background */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 gridpaper opacity-[0.07] pointer-events-none"
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
-        {[
-          {
-            src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/aleph-rTSU91imq3RwqWkPY9EEdeHeQTtWpW.JPG",
-            heading: "Dynamic Workshops for Skill Development",
-            desc: "Join our workshops to enhance your coding skills and gain practical knowledge.",
-          },
-          {
-            src: "/gemini.JPG",
-            heading: "Intensive Bootcamps for Career Growth",
-            desc: "Enroll in our bootcamps to level up your career and unlock new opportunities.",
-          },
-          {
-            src: "https://etvqaruci3mfadph.public.blob.vercel-storage.com/hackathon-Uc5t7qoWPpI2I0Ymd7PYsv9zH8P2Nu.JPG",
-            heading: "Exciting Hackathons for Team Building",
-            desc: "Participate in our hackathons to collaborate with others and build amazing projects.",
-          },
-        ].map((card, i) => (
-          <div
-            key={i}
-            ref={(el) => (cardsRef.current[i] = el)}
-            className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-          >
-            <Card {...card} />
-          </div>
-        ))}
-      </div>
-
-      <a
-        href="https://instagram.com/codeoholics"
-        className="inline-flex items-center px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-all duration-300"
-        target="_blank"
-        rel="noopener noreferrer"
+      {/* Decorative elements */}
+      <span
+        aria-hidden="true"
+        className="absolute top-6 left-5 font-mono font-bold text-lg text-ink select-none"
       >
-        Join us
-        <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-      </a>
-    </div>
+        +
+      </span>
+
+      <span
+        aria-hidden="true"
+        className="absolute bottom-6 right-5 font-mono font-bold text-lg text-ink select-none"
+      >
+        +
+      </span>
+
+      <span
+        aria-hidden="true"
+        className="label-mono absolute top-5 right-5 bg-ink text-paper px-2 py-1.5 hidden md:block"
+      >
+        N17.50 / E78.53
+      </span>
+
+      {/* Hero */}
+      <div className="relative w-full px-4 sm:px-6 pt-32 pb-16 grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-10 items-center">
+
+        {/* LEFT */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="label-mono flex items-center gap-3 mb-5 text-ink">
+            <span
+              className="inline-block w-12 h-1 bg-punk"
+              aria-hidden="true"
+            />
+            Student-led tech community — CMRTC Hyderabad
+          </p>
+
+          <h1 className="font-display uppercase leading-[0.92] text-[clamp(3.5rem,11vw,9.4rem)]">
+            <span className="hl-box">We are</span>
+            {"\u00A0"}
+            <br />
+            CodeOholics<span className="text-punk">.</span>
+          </h1>
+
+          <p className="mt-6 max-w-xl text-lg font-semibold text-ink/80">
+            A <span className="hl-acid">1,000+ member</span> crew running
+            workshops, bootcamps and a nationwide 24-hour hackathon. We learn
+            loud, build fast, and ship for real.
+          </p>
+
+          <div className="flex flex-wrap gap-4 mt-8">
+            <a
+              href="https://instagram.com/codeoholics"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-solid"
+            >
+              Join the club →
+            </a>
+
+            <Link to="/events" className="btn btn-outline">
+              See the events
+            </Link>
+          </div>
+
+          <div className="flex flex-wrap gap-2.5 mt-8">
+            {chips.map((c, i) => (
+              <span
+                key={c}
+                className={`chip ${i % 3 === 1 ? "!bg-acid" : ""}`}
+                style={{
+                  transform:
+                    i % 2
+                      ? "rotate(1.4deg)"
+                      : "rotate(-1.6deg)",
+                }}
+              >
+                {c}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* RIGHT / IMAGE */}
+        <motion.figure
+          initial={{ opacity: 0, rotate: 3 }}
+          animate={{ opacity: 1, rotate: 2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="relative w-full justify-self-center lg:justify-self-end mt-10 lg:mt-0"
+        >
+          <div className="border-[3px] border-ink bg-paper p-3 shadow-[12px_12px_0_0_var(--color-ink)] transition-transform duration-200 hover:shadow-[18px_18px_0_0_var(--color-punk)] hover:-translate-x-1 hover:-translate-y-1">
+
+            <img
+              src="/hero_image.webp"
+              alt="CodeOholics community at a company meet — members gathered for a talk."
+              className="w-full h-[280px] sm:h-[380px] md:h-[460px] lg:h-[520px] border-2 border-ink object-cover"
+            />
+
+            <figcaption className="flex justify-between items-center gap-3 pt-2.5 label-mono text-[10px] text-ink">
+              <span>File: HACK_THE_VERSE.webp</span>
+              <span>Scale: 9:16</span>
+            </figcaption>
+
+          </div>
+
+          {/* Stamps */}
+          <span className="stamp absolute -top-5 -left-6 rotate-[-8deg]">
+            24hrs hackathon
+          </span>
+
+          <span className="stamp absolute bottom-8 -right-4 rotate-[6deg] !bg-volt !shadow-[5px_5px_0_0_var(--color-zing)] text-center leading-none">
+            1K+
+            <br />
+            MEMBERS
+          </span>
+        </motion.figure>
+
+      </div>
+    </section>
   );
 };
 

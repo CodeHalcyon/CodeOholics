@@ -4,106 +4,94 @@ import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const items = ["Home", "About", "Events", "Opportunities", "Contact"];
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const pathFor = (item) =>
+    item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] flex justify-center">
-      <div
-        className={`flex items-center justify-between transition-all duration-500 ease-in-out
-          ${
-            scrolled
-              ? "max-w-5xl w-full mt-4 mx-4 px-6 py-2.5 rounded-full bg-white shadow-lg"
-              : "max-w-full w-full px-6 py-4 bg-white/80 backdrop-blur-md"
-          }`}
-      >
-        <NavLink to="/" className="flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-[100] bg-ink text-paper border-b-4 border-ink">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 h-16 px-4 sm:px-6">
+        <NavLink to="/" className="flex items-center gap-3 shrink-0">
           <img
             src="/logo.jpg"
-            alt="Logo"
-            className="h-9 w-auto rounded-full shrink-0"
+            alt="CodeOholics logo"
+            className="h-10 w-10 object-cover border-2 border-paper"
           />
+          <span className="font-display text-xl sm:text-2xl leading-none tracking-wide">
+            CodeOholics
+            <sup className="font-mono text-[10px] text-acid ml-1">EST.2022</sup>
+          </span>
         </NavLink>
 
-        <div className="hidden md:flex gap-8">
-          {items.map((item, key) => (
+        <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
+          {items.map((item, i) => (
             <NavLink
-              key={key}
-              to={
-                item === "Home"
-                  ? "/"
-                  : `/${item.toLowerCase().replace(" ", "-")}`
-              }
+              key={i}
+              to={pathFor(item)}
               className={({ isActive }) =>
-                `relative text-sm font-semibold tracking-wider transition-all duration-300 uppercase font-body
-                after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] 
-                after:bg-gray-900 after:transition-all after:duration-300
-                hover:after:w-full
-                ${isActive ? "text-gray-900 after:w-full" : "text-gray-700 hover:text-gray-900"}`
+                `px-4 py-2 font-mono font-bold text-xs tracking-[0.14em] uppercase transition-colors duration-150 border-2 border-transparent hover:bg-zing hover:text-ink hover:border-zing ${
+                  isActive ? "text-zing bg-ink" : "text-paper/85 hover:text-ink"
+                }`
               }
             >
               {item}
             </NavLink>
           ))}
-        </div>
+          <NavLink
+            to="/opportunities"
+            className="ml-2 px-4 py-2 font-mono font-bold text-xs tracking-[0.14em] uppercase bg-punk !border-transparent text-paper hover:bg-paper hover:text-ink transition-colors duration-150"
+          >
+            Apply ★
+          </NavLink>
+        </nav>
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden focus:outline-none text-gray-700"
-          aria-label="Toggle Menu"
+          className="md:hidden h-11 w-11 grid place-items-center bg-zing text-ink text-lg font-bold"
+          aria-label="Toggle menu"
+          aria-expanded={isOpen}
         >
-          {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          {isOpen ? <FiX size={22} /> : <FiMenu size={22} />}
         </button>
       </div>
 
       <div
-        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-white/95 backdrop-blur-md transition-all duration-400
-          ${
-            isOpen
-              ? "opacity-100 visible"
-              : "opacity-0 invisible pointer-events-none"
-          }`}
+        className={`md:hidden fixed inset-0 top-16 bg-ink text-paper transition-all duration-300 ${
+          isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+        }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-8">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-6 right-6 text-gray-700"
-            aria-label="Close Menu"
-          >
-            <FiX size={28} />
-          </button>
-          {items.map((item, key) => (
+        <div className="flex flex-col justify-start h-full px-6 py-8 overflow-y-auto">
+          {items.map((item, i) => (
             <NavLink
-              key={key}
-              to={
-                item === "Home"
-                  ? "/"
-                  : `/${item.toLowerCase().replace(" ", "-")}`
-              }
-              className={({ isActive }) =>
-                `text-lg font-semibold uppercase tracking-widest transition-all duration-300 font-body
-                ${isActive ? "text-gray-900" : "text-gray-700 hover:text-gray-900"}`
-              }
+              key={i}
+              to={pathFor(item)}
               onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `font-display text-4xl uppercase py-3 border-b-2 border-paper/20 hover:text-zing hover:border-zing transition-colors ${
+                  isActive ? "text-zing" : "text-paper"
+                }`
+              }
             >
               {item}
             </NavLink>
           ))}
+          <a
+            href="https://forms.gle/dUxfQyTAep6hTxSQ9"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+            className="mt-8 bg-zing text-ink text-center font-display text-2xl uppercase py-4 border-2 border-zing hover:bg-punk hover:text-paper hover:border-punk transition-colors"
+          >
+            Join the club →
+          </a>
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 
