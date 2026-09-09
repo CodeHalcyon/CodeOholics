@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FiCalendar, FiFileText, FiUsers, FiBriefcase, FiMail, FiPlus, FiEdit2, FiTrash2, FiLogOut } from "react-icons/fi";
+import { FiCalendar, FiFileText, FiUsers, FiBriefcase, FiMail, FiBookOpen, FiPlus, FiEdit2, FiTrash2, FiLogOut } from "react-icons/fi";
 import { ToastContainer } from "react-toastify";
 import AdminLogin from "./AdminLogin";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import EventsManagement from "./EventsManagement";
 import TeamManagement from "./TeamManagement";
 import OpportunitiesManagement from "./OpportunitiesManagement";
 import ContactQueries from "./ContactQueries";
+import ResourcesManagement from "./ResourcesManagement";
 import getUsers from "../Helper/getUsers";
 
 const CountBadge = ({ n }) => (
@@ -18,7 +19,7 @@ const Dashboard = () => {
   getUsers();
   const [activeTab, setActiveTab] = useState("events");
   const [showAddFormForm, setShowAddFormForm] = useState(false);
-  const [counts, setCounts] = useState({ events: 0, team: 0, opps: 0, queries: 0 });
+  const [counts, setCounts] = useState({ events: 0, team: 0, opps: 0, queries: 0, resources: 0 });
   const [sessionChecked, setSessionChecked] = useState(false);
   const [hasSession, setHasSession] = useState(false);
   let navigate = useNavigate();
@@ -34,13 +35,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchCounts = async () => {
-      const [{ count: e }, { count: t }, { count: o }, { count: q }] = await Promise.all([
+      const [{ count: e }, { count: t }, { count: o }, { count: q }, { count: r }] = await Promise.all([
         supabase.from("events").select("*", { count: "exact", head: true }),
         supabase.from("core_team").select("*", { count: "exact", head: true }),
         supabase.from("opportunities").select("*", { count: "exact", head: true }),
         supabase.from("contact_messages").select("*", { count: "exact", head: true }),
+        supabase.from("resources").select("*", { count: "exact", head: true }),
       ]);
-      setCounts({ events: e ?? 0, team: t ?? 0, opps: o ?? 0, queries: q ?? 0 });
+      setCounts({ events: e ?? 0, team: t ?? 0, opps: o ?? 0, queries: q ?? 0, resources: r ?? 0 });
     };
     fetchCounts();
   }, [activeTab]);
@@ -98,6 +100,8 @@ const Dashboard = () => {
                 onClick={() => setActiveTab("opps")}><FiBriefcase className="mr-2" /> Opportunities <CountBadge n={counts.opps} /></button>
               <button className={`py-3 px-5 text-sm font-medium flex items-center ${activeTab === "queries" ? "text-gray-900 border-b-2 border-gray-900" : "text-gray-500 hover:text-gray-700"}`}
                 onClick={() => setActiveTab("queries")}><FiMail className="mr-2" /> Queries <CountBadge n={counts.queries} /></button>
+              <button className={`py-3 px-5 text-sm font-medium flex items-center ${activeTab === "resources" ? "text-gray-900 border-b-2 border-gray-900" : "text-gray-500 hover:text-gray-700"}`}
+                onClick={() => setActiveTab("resources")}><FiBookOpen className="mr-2" /> Resources <CountBadge n={counts.resources} /></button>
               <button className={`py-3 px-5 text-sm font-medium flex items-center ${activeTab === "forms" ? "text-gray-900 border-b-2 border-gray-900" : "text-gray-500 hover:text-gray-700"}`}
                 onClick={() => setActiveTab("forms")}><FiFileText className="mr-2" /> Forms</button>
             </div>
@@ -109,6 +113,8 @@ const Dashboard = () => {
             {activeTab === "opps" && <OpportunitiesManagement />}
 
             {activeTab === "queries" && <ContactQueries />}
+
+            {activeTab === "resources" && <ResourcesManagement />}
 
             {activeTab === "forms" && (
               <div>

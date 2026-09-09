@@ -7,6 +7,7 @@ import Opportunities from "./components/Opportunities";
 import Footer from "./components/Footer";
 import AboutPage from "./pages/AboutPage";
 import EventsPage from "./pages/EventsPage";
+import ResourcesPage from "./pages/ResourcesPage";
 import AdminLogin from "./components/AdminLogin";
 import Dashboard from "./components/Dashboard";
 import PopupModal from "./components/PopupModal";
@@ -53,7 +54,7 @@ function App() {
               <Route path="/events" element={<EventsPage />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/opportunities" element={<Opportunities />} />
-              {/* <Route path="/resources" element={<Resources />} /> */}
+              <Route path="/resources" element={<ResourcesPage />} />
               <Route path="/admin-login" element={<AdminLogin />} />
               <Route path="/executive-results" element={<Results/>} />
               <Route path="/dashboard" element={<Dashboard />} />

@@ -4,7 +4,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const items = ["Home", "About", "Events", "Opportunities", "Contact"];
+  const items = ["Home", "About", "Events", "Resources", "Opportunities", "Contact"];
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
