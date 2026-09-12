@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   const popupImage = featuredEvent?.img;
-  const redirectUrl = featuredEvent?.venue || "https://cmrtc.ac.in";
+  const redirectUrl = featuredEvent?.link || featuredEvent?.venue || "https://cmrtc.ac.in";
   return (
     <>
       {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}

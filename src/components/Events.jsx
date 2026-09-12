@@ -86,6 +86,16 @@ const Events = () => {
                     <p><span className="text-punk">DATE</span> · {dateLabel(featuredEvent.date)}</p>
                   )}
                 </div>
+                {featuredEvent.link && (
+                  <a
+                    href={featuredEvent.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-solid !bg-ink !text-paper !shadow-[6px_6px_0_0_var(--color-signal)] hover:!bg-paper hover:!text-ink hover:!shadow-[6px_6px_0_0_var(--color-volt)] mt-6 self-start"
+                  >
+                    Event link →
+                  </a>
+                )}
               </div>
             </motion.div>
           ) : (

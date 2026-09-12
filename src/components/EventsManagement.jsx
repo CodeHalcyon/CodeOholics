@@ -7,7 +7,7 @@ import supabase from "../config/supabaseConfig";
 import getEvents from "../Helper/getEvents";
 import uploadToBlob, { eventImageFolder } from "../Helper/uploadToBlob";
 
-const emptyEvent = { title: "", date: "", venue: "", description: "", img: "" };
+const emptyEvent = { title: "", date: "", venue: "", description: "", img: "", link: "" };
 const dateLabel = (date) => {
   const opts = { year: "numeric", month: "short", day: "numeric" };
   return new Date(date + "T00:00:00").toLocaleDateString("en-IN", opts);
@@ -44,6 +44,7 @@ const EventsManagement = () => {
       venue: event.venue || "",
       description: event.description || "",
       img: event.img || "",
+      link: event.link || "",
     });
     setEditingId(event.id);
     setShowForm(true);
@@ -132,6 +133,8 @@ const EventsManagement = () => {
               </div>
               <textarea placeholder="Description" rows="3" className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 resize-none"
                 value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+              <input type="text" placeholder="Event link (optional) — registration / gallery URL" className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                value={form.link} onChange={(e) => setForm({ ...form, link: e.target.value })} />
               <div>
                 <label className="flex items-center justify-between gap-3 px-3 py-2 border border-dashed border-gray-300 rounded-lg cursor-pointer text-sm text-gray-500 hover:bg-gray-50">
                   <span className="flex items-center gap-2">
