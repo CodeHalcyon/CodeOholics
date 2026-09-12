@@ -93,7 +93,7 @@ const Events = () => {
                     rel="noopener noreferrer"
                     className="btn btn-solid !bg-ink !text-paper !shadow-[6px_6px_0_0_var(--color-signal)] hover:!bg-paper hover:!text-ink hover:!shadow-[6px_6px_0_0_var(--color-volt)] mt-6 self-start"
                   >
-                    Event link →
+                    Contest link →
                   </a>
                 )}
               </div>
